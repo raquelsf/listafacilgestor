@@ -1,0 +1,63 @@
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Novo Estabelecimento</h4>
+                    </div>
+                    <div class="content">
+                        <form >
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>CEP</label>
+                                        <input type="phone" class="form-control border-input" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Cidade</label>
+                                        <select2 [data]="exampleData"></select2>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Rua</label>
+                                        <select class="form-control border-input">
+                                            <option>Selecione</option>
+                                            <option *ngFor="let row of Streets" value="{{ row.id }}"> {{ row.nome }} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Bairro</label>
+                                        <select class="form-control border-input">
+                                            <option>Selecione</option>
+                                            <option *ngFor="let row of Neighborhoods" value="{{ row.id }}"> {{ row.nome }} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Número</label>
+                                        <input type="phone" class="form-control border-input" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Complemento</label>
+                                        <input type="text" class="form-control border-input" placeholder="" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success btn-fill btn-wd">Cadastrar</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

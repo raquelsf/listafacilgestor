@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                        <div class="col-md-6 text-left"> 
+                            <h4 class="title">Controle de Categorias</h4>
+                        </div>
+                        <div class="col-md-6 text-right"> 
+                            <a class="btn btn-default btn-fill btn-wd" [routerLink]='["register"]' >Cadastrar Categoria</a>
+                        </div>
+                    </div>
+                <div class="content table-responsive table-full-width">
+                    <table class="table table-striped">
+                        <thead class="thead">
+                            <tr>
+                                <th >Nome</th>
+                                <th >Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of Categories">
+                                <th>{{ row.nome }}</th>
+                                <th>
+                                    <a class="btn btn-default btn-fill btn-xs" href="{{ row.id }}">Editar</a> 
+                                    <a class="btn btn-danger btn-fill btn-xs" href="{{ row.id }}">Excluir</a> 
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

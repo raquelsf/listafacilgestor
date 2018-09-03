@@ -1,0 +1,36 @@
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Nova SubCategoria</h4>
+                    </div>
+                    <div class="content">
+                        <form >
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Categoria</label>
+                                        <select class="form-control border-input">
+                                            <option>Selecione</option>
+                                            <option *ngFor="let row of Categories" value="{{ row.id }}"> {{ row.nome }} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Nome SubCategoria</label>
+                                        <input type="text" class="form-control border-input" placeholder="" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success btn-fill btn-wd">Cadastrar</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
