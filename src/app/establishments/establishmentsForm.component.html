@@ -8,43 +8,40 @@
                     <div class="content">
                         <form >
                             <div class="row">
+                                
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Cidade</label>
+                                        <select2 [data]="Cities" [options]="optionsSelect"></select2>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Bairro</label>
+                                        <select2 [data]="Neighborhoods" [options]="optionsSelect"></select2>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Rua</label>
+                                        <select2 [data]="Streets" [options]="optionsSelect"></select2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>CEP</label>
                                         <input type="phone" class="form-control border-input" placeholder="" >
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Cidade</label>
-                                        <select2 [data]="exampleData" [cssImport]=true></select2>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Rua</label>
-                                        <select class="form-control border-input">
-                                            <option>Selecione</option>
-                                            <option *ngFor="let row of Streets" value="{{ row.id }}"> {{ row.nome }} </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Bairro</label>
-                                        <select class="form-control border-input">
-                                            <option>Selecione</option>
-                                            <option *ngFor="let row of Neighborhoods" value="{{ row.id }}"> {{ row.nome }} </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <label>Número</label>
                                         <input type="phone" class="form-control border-input" placeholder="" >
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Complemento</label>
                                         <input type="text" class="form-control border-input" placeholder="" >

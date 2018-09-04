@@ -5,13 +5,25 @@ export class EstablishmentsListObject {
     public id:number;
     public nome:string;
     public categoria:string;
+    public text:string;
+    
+}
+export class Select2Options {
+    public width:string;
+    public placeholder:string;
+    public allowClear:string;
 }
 
 @Component({
     selector: 'categorieform-cmp',
     moduleId: module.id,
     templateUrl: 'establishmentsForm.component.html',
-    providers:  [ EstablishmentService ]
+    providers:  [ EstablishmentService ],
+    styles: [`
+        :host >>> .select2-container {
+                    width: 40px;
+        }
+    `]
 })
 export class EstablishmentsFormComponent implements OnInit{
     public status : boolean;
@@ -23,6 +35,7 @@ export class EstablishmentsFormComponent implements OnInit{
     public Neighborhoods = [];
     public Streets = [];
     public exampleData = [];
+    public optionsSelect : Select2Options[];
     
     public EstablishmentsFormComponent: EstablishmentsFormComponent;
     constructor(private EstablishmentService: EstablishmentService) {
@@ -47,24 +60,10 @@ export class EstablishmentsFormComponent implements OnInit{
             data => this.Streets = data.data
         );
 
-        this.exampleData = [
-            {
-              id: 'basic1',
-              text: 'Basic 1'
-            },
-            {
-              id: 'basic2',
-              disabled: true,
-              text: 'Basic 2'
-            },
-            {
-              id: 'basic3',
-              text: 'Basic 3'
-            },
-            {
-              id: 'basic4',
-              text: 'Basic 4'
-            }
-          ];
+        this.optionsSelect = {
+            placeholder: "Select option...",
+            allowClear: true,
+            width: "100%"
+          }
     }
 }
