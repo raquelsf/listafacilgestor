@@ -5,13 +5,21 @@ export class EstablishmentsListObject {
     public id:number;
     public nome:string;
     public categoria:string;
+    public text:string;
+    
 }
+
 
 @Component({
     selector: 'categorieform-cmp',
     moduleId: module.id,
     templateUrl: 'establishmentsForm.component.html',
-    providers:  [ EstablishmentService ]
+    providers:  [ EstablishmentService ],
+    styles: [`
+        :host >>> .select2-container {
+                    width: 40px;
+        }
+    `]
 })
 export class EstablishmentsFormComponent implements OnInit{
     public status : boolean;
@@ -46,25 +54,5 @@ export class EstablishmentsFormComponent implements OnInit{
         .subscribe(
             data => this.Streets = data.data
         );
-
-        this.exampleData = [
-            {
-              id: 'basic1',
-              text: 'Basic 1'
-            },
-            {
-              id: 'basic2',
-              disabled: true,
-              text: 'Basic 2'
-            },
-            {
-              id: 'basic3',
-              text: 'Basic 3'
-            },
-            {
-              id: 'basic4',
-              text: 'Basic 4'
-            }
-          ];
     }
 }

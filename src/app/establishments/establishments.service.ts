@@ -18,17 +18,17 @@ export class EstablishmentService {
   }
   
   public getCities() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/cities/list')
+    return this.http.get('http://localhost:8000/cities/list/select')
     .map(res=> res.json()); 
   }
 
   public getStreets() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/streets/list')
+    return this.http.get('http://localhost:8000/streets/list/select')
     .map(res=> res.json()); 
   }
 
   public getNeighborhoods() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/neighborhoods/list')
+    return this.http.get('http://localhost:8000/neighborhoods/list/select')
     .map(res=> res.json()); 
   }
 
