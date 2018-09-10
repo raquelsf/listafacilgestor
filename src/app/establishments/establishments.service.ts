@@ -32,6 +32,14 @@ export class EstablishmentService {
     .map(res=> res.json()); 
   }
 
+  public getSubCategories() :Observable<EstablishmentsComponent> {
+    return this.http.get('http://localhost:8000/subcategories')
+    .map(res=> res.json()); 
+  }
 
+  public getCategories() :Observable<EstablishmentsComponent> {
+    return this.http.get('http://localhost:8000/categories')
+    .map(res=> res.json()); 
+  }
 }
 

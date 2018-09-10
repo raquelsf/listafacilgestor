@@ -30,8 +30,12 @@ export class EstablishmentsFormComponent implements OnInit{
     public Cities = [];
     public Neighborhoods = [];
     public Streets = [];
-    public exampleData = [];
-    
+    public SubCategories = [];
+    public Categories = [];
+
+    public open(event, item) {
+        alert('Open ' + item);
+    }
     public EstablishmentsFormComponent: EstablishmentsFormComponent;
     constructor(private EstablishmentService: EstablishmentService) {
         this.EstablishmentService = EstablishmentService;
@@ -54,5 +58,15 @@ export class EstablishmentsFormComponent implements OnInit{
         .subscribe(
             data => this.Streets = data.data
         );
+        this.EstablishmentService.getSubCategories()
+        .subscribe(
+            data => this.SubCategories = data.data
+            
+          );
+        this.EstablishmentService.getCategories()
+        .subscribe(
+            data => this.Categories = data.data
+            
+          );
     }
 }
