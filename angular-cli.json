@@ -20,8 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/select2/dist/css/select2.min.css",
-        "../node_modules/bootstrap-switch-master/dist/css/bootstrap-switch.min.css"
+        "../node_modules/select2/dist/css/select2.min.css"
       ],
       "scripts": [
           "../node_modules/jquery/dist/jquery.js",
