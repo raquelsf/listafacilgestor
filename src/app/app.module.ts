@@ -11,8 +11,8 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { NguiMapModule} from '@ngui/map';
 import { Select2Module } from 'ng2-select2';
-import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { UserComponent }   from './user/user.component';
@@ -55,8 +55,8 @@ import { EstablishmentsFormComponent }   from './establishments/form.component';
     FixedPluginModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     Select2Module,
-    BootstrapSwitchModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserModule, 
+    UiSwitchModule
 
   ],
   providers: [

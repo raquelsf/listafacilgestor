@@ -17,21 +17,6 @@ export class EstablishmentService {
     .map(res=> res.json()); 
   }
   
-  public getCities() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/cities/list/select')
-    .map(res=> res.json()); 
-  }
-
-  public getStreets() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/streets/list/select')
-    .map(res=> res.json()); 
-  }
-
-  public getNeighborhoods() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/neighborhoods/list/select')
-    .map(res=> res.json()); 
-  }
-
   public getSubCategories() :Observable<EstablishmentsComponent> {
     return this.http.get('http://localhost:8000/subcategories')
     .map(res=> res.json()); 
