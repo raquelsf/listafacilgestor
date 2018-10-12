@@ -16,6 +16,10 @@ export const AppRoutes: Routes = [
         pathMatch: 'full',
     },
     {
+        path: 'login',
+        component: UserComponent
+    },
+    {
         path: 'dashboard',
         component: DashboardComponent
     },

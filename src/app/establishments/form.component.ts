@@ -29,11 +29,13 @@ export class EstablishmentsFormComponent implements OnInit{
 
     public segunda = true;
     public enable: any;
-    
-    public open(event, item) {
+
+    public mask = [/[1-9]/,/[1-9]/, ':', /[1-9]/,/[1-9]/];
+    public open(event, teste) {
+        console.log(teste);
         if(event == true){
             this.segunda = false;
-            alert(this.enable);
+            // alert(this.enable);
         }else{
             this.segunda = true;
         }

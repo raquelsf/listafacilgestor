@@ -27,14 +27,10 @@ export class EstablishmentsComponent implements OnInit{
      }
 
     ngOnInit(){
-
         this.EstablishmentService.getEstablishments()
         .subscribe(
             data => this.Establishments = data.data
-            
           );
-          
-          console.log(this.Establishments);
-      
+        console.log(this.Establishments);
     }
 }

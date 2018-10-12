@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
@@ -32,6 +33,7 @@ import { EstablishmentsComponent }   from './establishments/establishments.compo
 import { EstablishmentService }   from './establishments/establishments.service';
 import { EstablishmentsFormComponent }   from './establishments/form.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,8 @@ import { EstablishmentsFormComponent }   from './establishments/form.component';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     Select2Module,
     BrowserModule, 
-    UiSwitchModule
+    UiSwitchModule,
+    TextMaskModule
 
   ],
   providers: [

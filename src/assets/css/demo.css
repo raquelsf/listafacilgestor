@@ -69,3 +69,14 @@
 .table-upgrade td:nth-child(3){
     text-align: center;
 }
+
+.form-control {
+    background-color: #ffffff;
+}
+
+.switch.switch-medium.checked{
+    background-color: rgb(175, 34, 34) !important;
+}
+.switch.switch-medium{
+    background-color: rgb(12, 155, 19) !important;
+}

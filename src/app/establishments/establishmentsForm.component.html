@@ -96,8 +96,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        
-                                        
                                         </div>
                                     </div>
                                 </div>
@@ -184,17 +182,87 @@
                                         <div class="content">
                                             <div class="row">    
                                                 <div class="col-lg-12">
-                                                    <div>
-                                                        <label class="col-sm-3 col-md-3 col-lg-2 control-label">Segunda Feira:</label>
-                                                        <div class="col-sm-2 col-md-2 col-lg-2">
-                                                            <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
-                                                        </div>
-                                                        <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
-                                                            <label>Horario de abrir:</label>
-                                                            <input type="text" class="form-control border-input hour" placeholder="" >
-                                                            <label>Horario de fechar:</label>
-                                                            <input type="text" class="form-control border-input hour" placeholder="" >
-                                                        </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <label> Domingo:</label>
+                                                    </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
+                                                        <label>Horario de abrir:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                        <label>Horario de fechar:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <label> Segunda Feira:</label>
+                                                    </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
+                                                        <label>Horario de abrir:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                        <label>Horario de fechar:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <label> Terça Feira:</label>
+                                                    </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
+                                                        <label>Horario de abrir:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                        <label>Horario de fechar:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <label> Quarta Feira:</label>
+                                                    </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
+                                                        <label>Horario de abrir:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                        <label>Horario de fechar:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <label> Quinta Feira:</label>
+                                                    </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
+                                                        <label>Horario de abrir:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                        <label>Horario de fechar:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <label> Sexta Feira:</label>
+                                                    </div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <ui-switch (change)="open($event, this)" checkedLabel="on" uncheckedLabel="off"></ui-switch>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-8" *ngIf="segunda">
+                                                        <label>Horario de abrir:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
+                                                        <label>Horario de fechar:</label>
+                                                        <input type="text" [textMask]="{mask: mask}" class="form-control border-input hour" placeholder="00:00" >
                                                     </div>
                                                 </div>
                                             </div>
