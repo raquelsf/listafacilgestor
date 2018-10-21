@@ -31,8 +31,12 @@ import { SubCategoriesFormComponent }   from './subcategories/form.component';
 
 import { EstablishmentsComponent }   from './establishments/establishments.component';
 import { EstablishmentService }   from './establishments/establishments.service';
+
+import { UserService }   from './user/user.service';
+
 import { EstablishmentsFormComponent }   from './establishments/form.component';
 
+import { CepService }   from './cep.service';
 
 @NgModule({
   declarations: [
@@ -65,8 +69,12 @@ import { EstablishmentsFormComponent }   from './establishments/form.component';
   providers: [
     CategorieService,
     SubCategorieService,
-    EstablishmentService
+    EstablishmentService,
+    CepService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { ActivatedRoute } from '@angular/router';
 
 declare var $:any;
 
@@ -10,6 +11,14 @@ declare var $:any;
 })
 
 export class DashboardComponent implements OnInit{
+  public user : boolean;
+
+    constructor(private route: ActivatedRoute) {
+      this.route.queryParams.subscribe(queryParams => {
+        this.user = queryParams.user;
+        console.log(queryParams.user);
+      });
+    }
     ngOnInit(){
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],

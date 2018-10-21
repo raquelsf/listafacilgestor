@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.config.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -40,6 +40,7 @@
     "npm": "^6.4.1",
     "rxjs": "5.4.2",
     "select2": "~4.0",
+    "sweetalert2": "^7.28.7",
     "to": "^0.2.9",
     "update": "^0.7.4",
     "zone.js": "0.8.4"

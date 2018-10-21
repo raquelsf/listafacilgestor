@@ -1,6 +1,7 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
+    <div class="row" style="margin-top: 5%;">
+        <div class="col-md-4"></div>
+        <div class="col-lg-4 col-md-4">
             <div class="card card-user">
                 <div class="image">
                     <img src="assets/img/background.jpg" alt="..."/>
@@ -13,21 +14,23 @@
                         </h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <form #userForm="ngForm"(ngSubmit)="onSubmit(userForm.value)">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Usuário</label>
-                                        <input type="text" class="form-control border-input" placeholder="Usuário" value="">
+                                        <input type="text" class="form-control border-input" placeholder="Usuário" [(ngModel)]="username" name="username">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6" >
                                     <div class="form-group">
                                         <label>Senha</label>
-                                        <input type="password" class="form-control border-input" placeholder="******" value="">
+                                        <input type="password" class="form-control border-input" placeholder="******" [(ngModel)]="password" name="password" > 
                                     </div>
                                 </div>
                             </div>
