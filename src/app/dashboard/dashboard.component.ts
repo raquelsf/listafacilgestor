@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
-import { ActivatedRoute } from '@angular/router';
-
+import { UserService }   from '../user/user.service';
+import {Observable} from "rxjs";
 declare var $:any;
 
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html'
+    templateUrl: 'dashboard.component.html',
+    providers:  [ UserService ]
 })
 
 export class DashboardComponent implements OnInit{
   public user : boolean;
-
-    constructor(private route: ActivatedRoute) {
-      this.route.queryParams.subscribe(queryParams => {
-        this.user = queryParams.user;
-        console.log(queryParams.user);
-      });
+    mostrarMenu : Observable<boolean>;
+    constructor(private UserService: UserService) {
+      this.UserService = UserService;
+      this.mostrarMenu = UserService.isLoggedIn();
     }
     ngOnInit(){
+    console.log(this.mostrarMenu);
+
         var dataSales = {
           labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
           series: [

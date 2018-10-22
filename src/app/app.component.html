@@ -1,4 +1,4 @@
-<div class="wrapper"  *ngIf="user == true">
+<div class="wrapper"  *ngIf="(mostrarMenu | async)">
     <div class="sidebar" data-background-color="white" data-active-color="danger">
         <sidebar-cmp></sidebar-cmp>
     </div>
@@ -13,6 +13,7 @@
 <!-- <fixedplugin-cmp></fixedplugin-cmp> -->
 
 
-<div class="content" *ngIf="user == false">
+
+<div class="container"  *ngIf="!(mostrarMenu | async)">
     <router-outlet></router-outlet>
 </div>

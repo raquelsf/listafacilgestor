@@ -11,44 +11,44 @@ import { EstablishmentsFormComponent }   from './establishments/form.component';
 
 export const AppRoutes: Routes = [
     {
-        path: 'api/',
-        redirectTo: 'dashboard',
+        path: '',
+        redirectTo: 'login',
         pathMatch: 'full',
     },
     {
-        path: 'api/login',
+        path: 'login',
         component: UserComponent
     },
     {
-        path: 'api/dashboard',
+        path: 'dashboard',
         component: DashboardComponent
     },
     {
-        path: 'api/user',
+        path: 'user',
         component: UserComponent
     },
     {
-        path: 'api/categories',
+        path: 'categories',
         component: CategoriesComponent
     },
     {
-        path: 'api/subcategories',
+        path: 'subcategories',
         component: SubCategoriesComponent
     },
     {
-        path: 'api/subcategories/register',
+        path: 'subcategories/register',
         component: SubCategoriesFormComponent
     },
     {
-        path: 'api/categories/register',
+        path: 'categories/register',
         component: CategoriesFormComponent
     },
     {
-        path: 'api/establishments',
+        path: 'establishments',
         component: EstablishmentsComponent
     },
     {
-        path: 'api/establishments/register',
+        path: 'establishments/register',
         component: EstablishmentsFormComponent
     }
 ]

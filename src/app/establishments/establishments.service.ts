@@ -13,17 +13,17 @@ export class EstablishmentService {
     ) { }
 
   public getEstablishments() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/establishments')
+    return this.http.get('http://listfacil.com/public/establishments')
     .map(res=> res.json()); 
   }
   
   public getSubCategories() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/subcategories')
+    return this.http.get('http://listfacil.com/public/subcategories')
     .map(res=> res.json()); 
   }
 
   public getCategories() :Observable<EstablishmentsComponent> {
-    return this.http.get('http://localhost:8000/categories')
+    return this.http.get('http://listfacil.com/public/categories')
     .map(res=> res.json()); 
   }
 }

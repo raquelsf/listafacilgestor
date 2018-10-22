@@ -10,10 +10,10 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'api/dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
-    { path: 'api/categories', title: 'Categorias',  icon:'ti-view-list-alt', class: '' },
-    { path: 'api/subcategories', title: 'SubCategorias',  icon:'ti-align-left', class: '' },
-    { path: 'api/establishments', title: 'Estabelecimentos',  icon:'ti-shopping-cart', class: '' }
+    { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
+    { path: 'categories', title: 'Categorias',  icon:'ti-view-list-alt', class: '' },
+    { path: 'subcategories', title: 'SubCategorias',  icon:'ti-align-left', class: '' },
+    { path: 'establishments', title: 'Estabelecimentos',  icon:'ti-shopping-cart', class: '' }
 ];
 
 @Component({
