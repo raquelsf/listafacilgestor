@@ -19,9 +19,10 @@ export class UserService {
       private http: Http, 
       private router: Router
     ) { }
-  
+
+
   public login(data){
-    return this.http.post('http://listfacil.com/public/login', data)
+    return this.http.post('http://listfacil.com/api/public/login', data)
     .toPromise().then(res => { 
       if(res.json().status == 'false'){
         this.usuarioAutenticado = false;

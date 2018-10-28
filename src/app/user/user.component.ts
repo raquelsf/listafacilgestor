@@ -13,12 +13,15 @@ import Swal from 'sweetalert2'
 
 
 export class UserComponent implements OnInit{
-    private User : User = new User();
+    public User : User = new User();
+    public token : any;
     constructor(private UserService: UserService) {
         this.UserService = UserService;
     }
     ngOnInit(){
-        localStorage.removeItem('token');
+        this.token = localStorage.getItem('token');
+        console.log(this.token);
+        
     }
     public onSubmit(user: User){
         this.UserService.login(user).then();

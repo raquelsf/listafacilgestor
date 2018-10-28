@@ -13,7 +13,7 @@ export class CategorieService {
     ) { }
 
   public getCategories() :Observable<CategoriesComponent> {
-    return this.http.get('http://localhost:8000/categories')
+    return this.http.get('http://listfacil.com/api/public/categories')
     .map(res=> res.json()); 
   }
 

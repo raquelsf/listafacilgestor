@@ -13,12 +13,12 @@ export class SubCategorieService {
     ) { }
 
   public getSubCategories() :Observable<SubCategoriesComponent> {
-    return this.http.get('http://localhost:8000/subcategories')
+    return this.http.get('http://listfacil.com/api/public/subcategories')
     .map(res=> res.json()); 
   }
 
   public getCategories() :Observable<SubCategoriesComponent> {
-    return this.http.get('http://localhost:8000/categories')
+    return this.http.get('http://listfacil.com/api/public/categories')
     .map(res=> res.json()); 
   }
 
