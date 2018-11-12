@@ -3,7 +3,6 @@ import { UserService }   from './user.service';
 import { User }   from './user';
 import Swal from 'sweetalert2'
 
-
 @Component({
     selector: 'user-cmp',
     moduleId: module.id,
@@ -21,7 +20,6 @@ export class UserComponent implements OnInit{
     ngOnInit(){
         this.token = localStorage.getItem('token');
         console.log(this.token);
-        
     }
     public onSubmit(user: User){
         this.UserService.login(user).then();

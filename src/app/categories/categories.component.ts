@@ -26,14 +26,10 @@ export class CategoriesComponent implements OnInit{
      }
 
     ngOnInit(){
-
         this.CategorieService.getCategories()
         .subscribe(
             data => this.Categories = data.data
-            
           );
-          
           console.log(this.Categories);
-      
     }
 }

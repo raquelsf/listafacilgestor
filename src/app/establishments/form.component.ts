@@ -8,7 +8,18 @@ export class EstablishmentsListObject {
     public id:number;
     public nome:string;
     public categoria:string;
-    public text:string;
+    public desc:string;
+    public facebook:string;
+    public instagram:string;
+    public email:string;
+    public imagem:string;
+    public rua:string;
+    public estado:string;
+    public cidade:string;
+    public bairro:string;
+    public cep:string;
+    public numero:string;
+    public complemento:string;
 }
 
 
@@ -114,5 +125,9 @@ export class EstablishmentsFormComponent implements OnInit{
         this.CepService.buscar(this.cep.cep)
             .then((cep:Cep) => this.cep = cep);
             console.log(this.cep);
+    }
+
+    public saveEstablishment(){
+        console.log(this.data);
     }
 }

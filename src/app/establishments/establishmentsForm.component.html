@@ -9,7 +9,7 @@
                 <div class="content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" novalidate (ngSubmit)="saveEstablishment()">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="card">
                                         <div class="header">
@@ -31,7 +31,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">SubCategoria:</label>
                                                         <div class="col-sm-7 col-md-7 col-lg-8">
-                                                            <select2 [data]="SubCategories" class="select2"></select2>
+                                                            <select2 [data]="SubCategories" class="select2"  name="id_subcategoria"></select2>
                                                         </div>
                                                     </div>    
                                                 </div>
@@ -41,7 +41,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Nome:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="text" class="form-control border-input" placeholder="" >
+                                                            <input type="text" class="form-control border-input" name="data.nome" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -51,7 +51,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Descrição:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="text" class="form-control border-input" placeholder="" >
+                                                            <input type="text" class="form-control border-input" name="desc" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -59,9 +59,9 @@
                                             <div class="row">    
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Logo:</label>
+                                                        <label class="col-sm-4 col-md-4 col-lg-3 control-label" >Logo:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="file">
+                                                            <input type="file" name="imagem">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,7 +71,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Email:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="text" class="form-control border-input" placeholder="" >
+                                                            <input type="text" class="form-control border-input" name="email" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -81,7 +81,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Facebook:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="text" class="form-control border-input" placeholder="" >
+                                                            <input type="text" class="form-control border-input" name="facebook" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -91,7 +91,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Instagram:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="text" class="form-control border-input" placeholder="" >
+                                                            <input type="text" class="form-control border-input" name="instagram" placeholder="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +156,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Número:</label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="phone" class="form-control border-input" placeholder="" >
+                                                            <input type="phone" class="form-control border-input" placeholder=""  name="numero" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,7 +166,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Complemento: </label>
                                                         <div class="col-sm-8 col-md-8 col-lg-9">
-                                                            <input type="text" class="form-control border-input" placeholder="" >
+                                                            <input type="text" class="form-control border-input" placeholder="" name="complemento"  >
                                                         </div>
                                                     </div>
                                                 </div>

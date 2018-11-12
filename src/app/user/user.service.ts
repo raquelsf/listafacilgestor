@@ -4,7 +4,6 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs";
 import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
-import { UserComponent }   from './user.component';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

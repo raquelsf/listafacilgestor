@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategorieService }   from './categories.service';
-  
-export class CategoriesListObject {
-    public id:number;
-    public nome:string;
-    public categoria:string;
-}
+import { Categorie }   from './categorie';
+
 
 @Component({
     selector: 'categorieform-cmp',
@@ -16,20 +12,23 @@ export class CategoriesListObject {
 export class CategoriesFormComponent implements OnInit{
     public status : boolean;
     public message : string;
-    public data : CategoriesListObject[];
-
-    public Categories = [];
-
+    public Categorie : Categorie = new Categorie();
+    public file : File;
     public CategoriesFormComponent: CategoriesFormComponent;
-    constructor(private SubCategorieService: CategorieService) {
-        this.SubCategorieService = SubCategorieService;
+    constructor(private CategorieService: CategorieService) {
+        this.CategorieService = CategorieService;
      }
 
-     ngOnInit(){
-        this.SubCategorieService.getCategories()
-        .subscribe(
-            data => this.Categories = data.data
-            
-          );
+    ngOnInit(){
+    }
+
+    public onSubmit(Categorie: Categorie){
+        Categorie.file = this.file;
+        this.CategorieService.saveCategorie(Categorie).then();
+    }
+
+    public uploadFile(event){
+        this.file = event.target.files[0];
+        console.log(this.file);
     }
 }
