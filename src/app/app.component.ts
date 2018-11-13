@@ -1,24 +1,20 @@
-import { Component } from '@angular/core';
-import { UserService }   from './user/user.service';
-import {Observable} from "rxjs";
-
-declare var $:any;
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers:  [ UserService ]
-
+    // tslint:disable-next-line
+    selector: 'body',
+    template: '<router-outlet></router-outlet>'
 })
-export class AppComponent{
-  mostrarMenu : Observable<boolean>;
-  constructor(private UserService: UserService) {
-    this.UserService = UserService;
-    this.mostrarMenu = UserService.isLoggedIn();
-  }
-  
-  ngOnInit(){
-    console.log(this.mostrarMenu);
-  }
+export class AppComponent implements OnInit {
+    constructor(private router: Router) { }
+
+    ngOnInit() {
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            window.scrollTo(0, 0)
+        });
+    }
 }
