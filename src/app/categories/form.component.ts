@@ -13,7 +13,7 @@ export class CategoriesFormComponent implements OnInit{
     public status : boolean;
     public message : string;
     public Categorie : Categorie = new Categorie();
-    public file : File;
+    public fileToUpload : File;
     public CategoriesFormComponent: CategoriesFormComponent;
     constructor(private CategorieService: CategorieService) {
         this.CategorieService = CategorieService;
@@ -23,12 +23,11 @@ export class CategoriesFormComponent implements OnInit{
     }
 
     public onSubmit(Categorie: Categorie){
-        Categorie.file = this.file;
+        Categorie.file = this.fileToUpload;
         this.CategorieService.saveCategorie(Categorie).then();
     }
 
-    public uploadFile(event){
-        this.file = event.target.files[0];
-        console.log(this.file);
+    public uploadFile(file: FileList){
+        this.fileToUpload = file[0];
     }
 }

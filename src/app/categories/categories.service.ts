@@ -17,8 +17,14 @@ export class CategorieService {
     private router: Router
   ) { 
     let headers = new Headers();
-    headers.append('Content-Type', 'multipart/form-data;boundary='+Math.random());
-    headers.append('Accept', 'application/json');
+    // headers.append('Content-Type', 'multipart/form-data');
+    headers.delete('Content-Type');
+    // headers.append("enctype", "multipart/form-data");
+
+    // // IE workaround for Cache issues
+    // headers.append("Cache-Control", "no-cache");
+    // headers.append("Cache-Control", "no-store");
+    // headers.append("Pragma", "no-cache");
   }
 
   public getCategories() :Observable<CategoriesComponent> {
@@ -26,12 +32,17 @@ export class CategorieService {
     .map(res=> res.json()); 
   }
 
-  public saveCategorie(data){
-    var form = new FormData();
-    form.append("file", data.imagem);
-    form.append("nome", data.nome);
+  public showCategorie(id) :Observable<CategoriesComponent> {
+    return this.http.get('http://listfacil.com/api/public/categories/'+id)
+    .map(res=> res.json()); 
+  }
 
-    return this.http.post('http://listfacil.com/api/public/categories', form, {headers:this.headers}).toPromise().then(res => { 
+
+  public saveCategorie(data){
+    let form: FormData = new FormData();
+    form.append('file', data.file);
+    form.append("nome", data.nome);
+    return this.http.post('http://listfacil.com/api/public/categories', form).toPromise().then(res => { 
       console.log(res);
       if(res.json().status == 'true'){
         Swal({
