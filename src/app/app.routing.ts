@@ -48,6 +48,10 @@ export const AppRoutes: Routes = [
                 component: CategoriesFormComponent
             },
             {
+                path: 'categories/edit/:id',
+                component: CategoriesFormComponent
+            },
+            {
                 path: 'establishments',
                 component: EstablishmentsComponent
             },
