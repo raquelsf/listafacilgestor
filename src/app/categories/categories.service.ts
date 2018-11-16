@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import {CategoriesComponent} from './categories.component';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 
 

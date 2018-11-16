@@ -1,4 +1,6 @@
 export class Categorie {
-    nome : string;
-    file : File;
+    id: number;
+    nome: string;
+    imagem: string;
+    file: File;
 }

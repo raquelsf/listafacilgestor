@@ -3,12 +3,6 @@ import {CategorieService} from './categories.service';
 import {Categorie} from './categorie';
 import {ActivatedRoute, Router} from '@angular/router';
 
-export class CategoriesListObject {
-    public id: number;
-    public nome: string;
-    public imagem: string;
-}
-
 @Component({
     selector: 'categorieform-cmp',
     moduleId: module.id,
@@ -21,7 +15,6 @@ export class CategoriesFormComponent implements OnInit {
     public Categorie: Categorie = new Categorie();
     public fileToUpload: File;
     public CategoriesFormComponent: CategoriesFormComponent;
-    public data: CategoriesListObject[];
 
     constructor(private CategorieService: CategorieService,
                 private _route: ActivatedRoute,
@@ -32,9 +25,13 @@ export class CategoriesFormComponent implements OnInit {
     ngOnInit() {
         this._route.paramMap.subscribe(parameterMap => {
             const id = +parameterMap.get('id');
+            console.log(id);
             this.getCategorie(id);
+            // this.Categorie = this.Categorie[0];
+            console.log(this.Categorie);
         });
     }
+
 
     public onSubmit(Categorie: Categorie) {
         Categorie.file = this.fileToUpload;
@@ -48,9 +45,8 @@ export class CategoriesFormComponent implements OnInit {
     private getCategorie(id) {
         this.CategorieService.showCategorie(id)
             .subscribe(
-                data => this.data = data.data
+                data => this.Categorie[0] = data.data
             );
-        console.log(this.data);
     }
 
 }
