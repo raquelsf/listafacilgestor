@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubCategorieService }   from './subcategories.service';
-  
-export class SubCategoriesListObject {
-    public id:number;
-    public nome:string;
-    public categoria:string;
-}
+import { Subcategorie }   from './subcategorie';
+
 
 @Component({
     selector: 'subcategorieform-cmp',
@@ -16,9 +12,7 @@ export class SubCategoriesListObject {
 export class SubCategoriesFormComponent implements OnInit{
     public status : boolean;
     public message : string;
-    public data : SubCategoriesListObject[];
-
-    public SubCategories = [];
+    public SubCategorie : Subcategorie = new Subcategorie();
     public Categories = [];
 
     public SubCategoriesFormComponent: SubCategoriesFormComponent;
@@ -27,12 +21,6 @@ export class SubCategoriesFormComponent implements OnInit{
      }
 
      ngOnInit(){
-        this.SubCategorieService.getSubCategories()
-        .subscribe(
-            data => this.SubCategories = data.data
-            
-          );
-
         this.SubCategorieService.getCategories()
         .subscribe(
             data => this.Categories = data.data
@@ -40,5 +28,10 @@ export class SubCategoriesFormComponent implements OnInit{
           );
 
           
+    }
+
+    public onSubmit(SubCategorie: Subcategorie){
+        console.log(SubCategorie);
+        this.SubCategorieService.saveSubCategorie(SubCategorie).then();
     }
 }

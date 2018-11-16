@@ -6,12 +6,12 @@
                         <h4 class="title">Nova SubCategoria</h4>
                     </div>
                     <div class="content">
-                        <form >
+                        <form #subCategorieForm="ngForm" (ngSubmit)="onSubmit(subCategorieForm.value)" >
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Categoria</label>
-                                        <select class="form-control border-input">
+                                        <select class="form-control border-input" [(ngModel)]="SubCategorie.id_categoria" name="id_categoria" >
                                             <option>Selecione</option>
                                             <option *ngFor="let row of Categories" value="{{ row.id }}"> {{ row.nome }} </option>
                                         </select>
@@ -20,7 +20,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Nome SubCategoria</label>
-                                        <input type="text" class="form-control border-input" placeholder="" >
+                                        <input type="text" class="form-control border-input" placeholder="" [(ngModel)]="SubCategorie.nome" name="nome" >
                                     </div>
                                 </div>
                             </div>

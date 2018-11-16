@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CategorieService }   from './categories.service';
 import { Categorie }   from './categorie';
 
-
 @Component({
     selector: 'categorieform-cmp',
     moduleId: module.id,
