@@ -45,8 +45,17 @@ export class CategoriesFormComponent implements OnInit {
     private getCategorie(id) {
         this.CategorieService.showCategorie(id)
             .subscribe(
-                data => this.Categorie[0] = data.data
-            );
+                data => {
+                    console.log(data.data['nome']);
+                    this.Categorie.nome = data.data['nome'];
+                    this.Categorie.imagem = data.data['imagem'];
+                    // if (data.status == true) {
+                    //     console.log(data.data['nome']);
+                    // } else {
+                    //     // this.vazio = true;
+                    // }
+
+                });
     }
 
 }
