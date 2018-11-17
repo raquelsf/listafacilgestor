@@ -1,0 +1,12 @@
+
+::ng-deep .accordion-toggle>button {
+    border: none !important;
+}
+
+::ng-deep .accordion-toggle>button:active{
+    background: #FFFFFF !important;
+}
+::ng-deep .panel-default > .panel-heading {
+    border: none !important;
+    background: white !important;
+}

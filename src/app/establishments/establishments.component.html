@@ -2,37 +2,28 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="header">
-                        <div class="col-md-6 text-left"> 
+                <div class="row">
+                    <div class="header">
+                        <div class="col-md-6 text-left">
                             <h4 class="title">Controle de Estabelecimentos</h4>
                         </div>
-                        <div class="col-md-6 text-right"> 
-                            <a class="btn btn-default btn-fill btn-wd" [routerLink]='["register"]' >Cadastrar Estabelecimento</a>
+                        <div class="col-md-6 text-right">
+                            <a class="btn btn-default btn-fill btn-wd" [routerLink]='["register"]'>Cadastrar Estabelecimento</a>
                         </div>
                     </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
-                        <thead class="thead">
-                            <tr>
-                                <th >Nome</th>
-                                <th >Categoria</th>
-                                <th >Opções</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let row of Establishments">
-                                 
-                                <th>{{ row.nome }}</th>
-                                <th>{{ row.categoria }}</th>
-                                <th>
-                                    <a class="btn btn-default btn-fill btn-xs" href="{{ row.id }}">Editar</a> 
-                                    <a class="btn btn-danger btn-fill btn-xs" href="{{ row.id }}">Excluir</a>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                </div>
+                <div class="row" style="padding: 15px;">
+                    <div class="col-md-12">
+                        <accordion>
+                            <accordion-group *ngFor="let s of SubCategories" heading="{{s.categoria}} - {{ s.nome }}">
+                                <app-establishments-list [idSubCategorie]="s.id"></app-establishments-list>
+                            </accordion-group>
+                        </accordion>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
