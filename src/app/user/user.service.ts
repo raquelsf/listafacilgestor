@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+
 @Injectable()
 export class UserService {
   private usuarioAutenticado: boolean = false;

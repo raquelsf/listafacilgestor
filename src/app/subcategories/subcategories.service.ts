@@ -16,8 +16,8 @@ export class SubCategorieService {
     ) {
     }
 
-    public getSubCategories(): Observable<SubCategoriesComponent> {
-        return this.http.get('http://listfacil.com/api/public/subcategories')
+    public getSubCategories(id): Observable<SubCategoriesComponent> {
+        return this.http.get('http://listfacil.com/api/public/subcategories/list/' + id)
             .map(res => res.json());
     }
 

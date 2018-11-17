@@ -1,0 +1,21 @@
+<div class="content table-responsive table-full-width">
+  <table class="table table-striped" [hidden]="SubCategories > 0">
+    <thead class="thead">
+    <tr>
+      <th >Categoria</th>
+      <th >Nome</th>
+      <th >Opções</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of SubCategories">
+      <th>{{ row.categoria }}</th>
+      <th>{{ row.nome }}</th>
+      <th>
+        <a class="btn btn-default btn-fill btn-xs" (click)="edit($event)" id="{{ row.id }}" >Editar</a>
+        <a class="btn btn-danger btn-fill btn-xs" (click)="delete($event)" id="{{ row.id }}">Excluir</a>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+</div>

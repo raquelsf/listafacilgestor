@@ -2,36 +2,29 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="header">
-                    <div class="col-md-6 text-left"> 
-                        <h4 class="title">Controle de Sub Categorias</h4>
+                <div class="row">
+                    <div class="header">
+                        <div class="col-md-6 text-left">
+                            <h4 class="title">Controle de Sub Categorias</h4>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a class="btn btn-default btn-fill btn-wd" [routerLink]='["register"]'>Cadastrar
+                                SubCategoria</a>
+                        </div>
                     </div>
-                    <div class="col-md-6 text-right"> 
-                        <a class="btn btn-default btn-fill btn-wd" [routerLink]='["register"]' >Cadastrar SubCategoria</a>
-                    </div>
+
                 </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
-                        <thead class="thead">
-                            <tr>
-                                <th >Categoria</th>
-                                <th >Nome</th>
-                                <th >Opções</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let row of SubCategories">
-                                <th>{{ row.categoria }}</th>
-                                <th>{{ row.nome }}</th>
-                                <th>
-                                    <a class="btn btn-default btn-fill btn-xs" (click)="edit($event)" id="{{ row.id }}" >Editar</a>
-                                    <a class="btn btn-danger btn-fill btn-xs" (click)="delete($event)" id="{{ row.id }}">Excluir</a>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="row" style="padding: 15px;">
+                    <div class="col-md-12">
+                        <accordion>
+                            <accordion-group *ngFor="let c of Categories" heading="{{ c.nome }}">
+                                <app-subcategories-list [idCategorie]="c.id"></app-subcategories-list>
+                            </accordion-group>
+                        </accordion>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

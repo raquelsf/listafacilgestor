@@ -39,7 +39,8 @@ import {EstablishmentsFormComponent} from './establishments/form.component';
 import {CepService} from './cep.service';
 
 import {DefaultLayoutComponent} from './containers';
-
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { SubcategoriesListComponent } from './subcategories/subcategories-list/subcategories-list.component';
 
 const APP_CONTAINERS = [
     DefaultLayoutComponent
@@ -57,7 +58,8 @@ const APP_CONTAINERS = [
         SubCategoriesComponent,
         SubCategoriesFormComponent,
         EstablishmentsComponent,
-        EstablishmentsFormComponent
+        EstablishmentsFormComponent,
+        SubcategoriesListComponent
     ],
     imports: [
         HttpModule,
@@ -72,7 +74,8 @@ const APP_CONTAINERS = [
         BrowserModule,
         // UiSwitchModule,
         TextMaskModule,
-        FormsModule
+        FormsModule,
+        AccordionModule.forRoot()
 
     ],
     providers: [
