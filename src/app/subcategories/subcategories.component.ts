@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SubCategorieService }   from './subcategories.service';
-  
+import {ActivatedRoute, Router} from '@angular/router';
+import Swal from 'sweetalert2'
+
 export class SubCategoriesListObject {
     public id:number;
     public nome:string;
@@ -22,7 +24,9 @@ export class SubCategoriesComponent implements OnInit{
     public SubCategories = [];
 
     public SubCategoriesComponent: SubCategoriesComponent;
-    constructor(private SubCategorieService: SubCategorieService) {
+    constructor(private SubCategorieService: SubCategorieService,
+                private _route: ActivatedRoute,
+                private _router: Router) {
         this.SubCategorieService = SubCategorieService;
      }
 
@@ -34,4 +38,25 @@ export class SubCategoriesComponent implements OnInit{
           );
           console.log(this.SubCategories);
     }
+
+    edit(e) {
+        this._router.navigate(['subcategories/edit/', e.target.id]);
+    }
+
+    delete(e) {
+        Swal({
+            title: 'Deseja mesmo excluir?',
+            text: 'Você não poderá reverter essa exclusão!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Desejo excluir',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                this.SubCategorieService.deleteSubCategorie(e.target.id);
+            }
+        })
+
+    }
+
 }
