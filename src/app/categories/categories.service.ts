@@ -61,6 +61,24 @@ export class CategorieService {
             }
         });
     }
-
+    public deleteCategorie(id) {
+        return this.http.delete('http://listfacil.com/api/public/categories/'+id).toPromise().then(res => {
+            console.log(res);
+            if (res.json().status == 'true') {
+                Swal({
+                    title: 'Pronto!',
+                    text: 'Categoria excluída.',
+                    type: 'success'
+                })
+                this.router.navigate(['categories']);
+            } else {
+                Swal({
+                    title: 'Ops!',
+                    text: 'Ocorreu um erro inesperado.',
+                    type: 'error'
+                })
+            }
+        });
+    }
 }
 

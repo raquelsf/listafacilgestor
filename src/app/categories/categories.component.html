@@ -23,7 +23,7 @@
                                 <th>{{ row.nome }}</th>
                                 <th>
                                     <a class="btn btn-default btn-fill btn-xs" (click)="edit($event)" id="{{ row.id }}" >Editar</a>
-                                    <a class="btn btn-danger btn-fill btn-xs" href="{{ row.id }}">Excluir</a> 
+                                    <a class="btn btn-danger btn-fill btn-xs"(click)="delete($event)" id="{{ row.id }}">Excluir</a>
                                 </th>
                             </tr>
                         </tbody>

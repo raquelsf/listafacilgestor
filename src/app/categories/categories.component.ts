@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategorieService} from './categories.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 export class CategoriesListObject {
     public id: number;
@@ -40,4 +41,21 @@ export class CategoriesComponent implements OnInit {
     edit(e) {
         this._router.navigate(['categories/edit/', e.target.id]);
     }
+
+    delete(e) {
+        Swal({
+            title: 'Deseja mesmo excluir?',
+            text: 'Você não poderá reverter essa exclusão!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Desejo excluir',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                this.CategorieService.deleteCategorie(e.target.id);
+            }
+        })
+
+    }
+
 }
