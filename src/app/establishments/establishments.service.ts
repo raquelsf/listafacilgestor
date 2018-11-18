@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import {EstablishmentsComponent} from './establishments.component';
+import {SubCategoriesComponent} from '../subcategories/subcategories.component';
 
 @Injectable()
 export class EstablishmentService {
@@ -22,7 +23,6 @@ export class EstablishmentService {
             .map(res => res.json());
     }
 
-
     public getSubCategories(): Observable<EstablishmentsComponent> {
         return this.http.get('http://listfacil.com/api/public/subcategories')
             .map(res => res.json());
@@ -32,8 +32,8 @@ export class EstablishmentService {
         return this.http.get('http://listfacil.com/api/public/categories')
             .map(res => res.json());
     }
-    public getSubCategoriesList(): Observable<EstablishmentsComponent> {
-        return this.http.get('http://listfacil.com/api/public/subcategories/establishments/list')
+    public getSubCategoriesList(id): Observable<SubCategoriesComponent> {
+        return this.http.get('http://listfacil.com/api/public/subcategories/list/' + id)
             .map(res => res.json());
     }
 

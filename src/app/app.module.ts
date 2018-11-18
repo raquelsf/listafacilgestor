@@ -34,15 +34,19 @@ import {EstablishmentService} from './establishments/establishments.service';
 
 import {UserService} from './user/user.service';
 
-import {EstablishmentsFormComponent} from './establishments/form.component';
+import {EstablishmentsFormComponent} from './establishments/establishments-form/establishments-form.component';
 
 import {CepService} from './cep.service';
 
 import {DefaultLayoutComponent} from './containers';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { SubcategoriesListComponent } from './subcategories/subcategories-list/subcategories-list.component';
 import { EstablishmentsListComponent } from './establishments/establishments-list/establishments-list.component';
 
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { EstablishmentsFormAddressComponent } from './establishments/establishments-form-address/establishments-form-address.component';
+import { EstablishmentsFormDataComponent } from './establishments/establishments-form-data/establishments-form-data.component';
+import { EstablishmentsFormScheduleComponent } from './establishments/establishments-form-schedule/establishments-form-schedule.component';
 const APP_CONTAINERS = [
     DefaultLayoutComponent
 ];
@@ -61,7 +65,10 @@ const APP_CONTAINERS = [
         EstablishmentsComponent,
         EstablishmentsFormComponent,
         SubcategoriesListComponent,
-        EstablishmentsListComponent
+        EstablishmentsListComponent,
+        EstablishmentsFormAddressComponent,
+        EstablishmentsFormDataComponent,
+        EstablishmentsFormScheduleComponent
     ],
     imports: [
         HttpModule,
@@ -77,7 +84,8 @@ const APP_CONTAINERS = [
         // UiSwitchModule,
         TextMaskModule,
         FormsModule,
-        AccordionModule.forRoot()
+        AccordionModule.forRoot(),
+        TabsModule.forRoot()
 
     ],
     providers: [

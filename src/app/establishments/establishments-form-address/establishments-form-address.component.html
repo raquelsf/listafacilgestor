@@ -1,0 +1,84 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="header">
+            <h5 class="title">Endereço</h5>
+            <small>Cadastre aqui o endereço do Estabelecimento</small>
+        </div>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">CEP:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="phone" [textMask]="{mask: maskCep}" class="form-control border-input"
+                                   placeholder="00000-00" [(ngModel)]="cep.cep" name="cepp"
+                                   [ngModelOptions]="{standalone: true}" (change)="buscar()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Cidade:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <!-- <select2 [data]="Cities" class="select2"></select2> -->
+                            <input type="text" class="form-control border-input" placeholder=""
+                                   [(ngModel)]="cep.cidade" name="cidade" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Rua:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <!-- <select2 [data]="Streets" class="select2"></select2> -->
+                            <input type="text" class="form-control border-input" placeholder=""
+                                   [(ngModel)]="cep.logradouro" name="logradouro"
+                                   [ngModelOptions]="{standalone: true}">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Bairro:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <!-- <select2 [data]="Neighborhoods" class="select2"></select2> -->
+                            <input type="text" class="form-control border-input" placeholder=""
+                                   [(ngModel)]="cep.bairro" name="bairro" [ngModelOptions]="{standalone: true}">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Número:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="phone" class="form-control border-input" placeholder="" name="numero">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Complemento: </label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input" placeholder=""
+                                   name="complemento">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,7 @@ import {SubCategoriesComponent} from './subcategories/subcategories.component';
 import {SubCategoriesFormComponent} from './subcategories/form.component';
 import {CategoriesFormComponent} from './categories/form.component';
 import {EstablishmentsComponent} from './establishments/establishments.component';
-import {EstablishmentsFormComponent} from './establishments/form.component';
+import {EstablishmentsFormComponent} from './establishments/establishments-form/establishments-form.component';
 
 import {DefaultLayoutComponent} from './containers';
 

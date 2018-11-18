@@ -1,0 +1,23 @@
+
+::ng-deep .nav-tabs .nav-link.active {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid !important;
+    border-bottom-color: #be0411 !important;
+}
+::ng-deep .nav-tabs .nav-link:hover{
+    border: none;
+}
+
+::ng-deep .nav-tabs .nav-link:focus {
+    border: none;
+}
+
+::ng-deep .nav-tabs>nav-link {
+    hover: none;
+}
+
+::ng-deep .tab-content {
+    border: none;
+}
