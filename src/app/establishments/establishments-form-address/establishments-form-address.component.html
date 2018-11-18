@@ -12,8 +12,7 @@
                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">CEP:</label>
                         <div class="col-sm-8 col-md-8 col-lg-9">
                             <input type="phone" [textMask]="{mask: maskCep}" class="form-control border-input"
-                                   placeholder="00000-00" [(ngModel)]="cep.cep" name="cepp"
-                                   [ngModelOptions]="{standalone: true}" (change)="buscar()">
+                                   placeholder="00000-00" [(ngModel)]="cep.cep" name="cep" (change)="buscar($event)">
                         </div>
                     </div>
                 </div>

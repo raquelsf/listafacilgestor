@@ -27,7 +27,7 @@ export class EstablishmentsComponent implements OnInit{
      }
 
     ngOnInit() {
-        this.EstablishmentService.getSubCategoriesList()
+        this.EstablishmentService.getSubCategories()
             .subscribe(
                 data => this.SubCategories = data.data
             );

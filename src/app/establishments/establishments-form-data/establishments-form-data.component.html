@@ -1,87 +1,94 @@
 <div class="card">
-  <div class="header">
-    <h5 class="title">Dados do Local</h5>
-    <small>Comece Informando os dados básicos do estabelecimento</small>
-  </div>
-  <div class="content">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">Categoria:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <select2 [data]="Categories" class="select2" (valueChanged)="getSubCategories($event)"></select2>
-          </div>
-        </div>
-      </div>
+    <div class="header">
+        <h5 class="title">Dados do Local</h5>
+        <small>Comece Informando os dados básicos do estabelecimento</small>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">SubCategoria:</label>
-          <div class="col-sm-7 col-md-7 col-lg-8">
-            <select2 [data]="SubCategories" class="select2"  name="id_subcategoria"></select2>
-          </div>
-        </div>
-      </div>
+    <div class="content">
+        <form #establishmentForm="ngForm" (ngSubmit)="onSubmit(establishmentForm.value)" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Categoria:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <select2 [data]="Categories" class="select2"
+                                     (valueChanged)="getSubCategories($event)"></select2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">SubCategoria:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <select2 [data]="SubCategories" class="select2" (change)="setSubCategorie($event)"></select2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Nome:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.nome" name="nome">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Descrição:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input"[(ngModel)]="Establishment.desc" name="desc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Logo:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="file"  (change)="uploadFile($event.target.files)" [(ngModel)]="Establishment.imagem" name="imagem">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Email:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.email" name="email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Facebook:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.facebook" name="facebook">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Instagram:</label>
+                        <div class="col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input"  [(ngModel)]="Establishment.instagram" name="instagram">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-fill btn-wd">Cadastrar</button>
+            </div>
+        </form>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">Nome:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <input type="text" class="form-control border-input" name="data.nome" placeholder="" >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">Descrição:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <input type="text" class="form-control border-input" name="desc" placeholder="" >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label" >Logo:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <input type="file" name="imagem">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">Email:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <input type="text" class="form-control border-input" name="email" placeholder="" >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">Facebook:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <input type="text" class="form-control border-input" name="facebook" placeholder="" >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label class="col-sm-4 col-md-4 col-lg-3 control-label">Instagram:</label>
-          <div class="col-sm-8 col-md-8 col-lg-9">
-            <input type="text" class="form-control border-input" name="instagram" placeholder="" >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>

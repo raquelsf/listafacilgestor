@@ -6,11 +6,14 @@ import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import {EstablishmentsComponent} from './establishments.component';
 import {SubCategoriesComponent} from '../subcategories/subcategories.component';
+import Swal from "sweetalert2";
+import {Router} from '@angular/router';
 
 @Injectable()
 export class EstablishmentService {
     constructor(
         private http: Http,
+        private router: Router
     ) {
     }
 
@@ -24,7 +27,7 @@ export class EstablishmentService {
     }
 
     public getSubCategories(): Observable<EstablishmentsComponent> {
-        return this.http.get('http://listfacil.com/api/public/subcategories')
+        return this.http.get('http://listfacil.com/api/public/subcategories/establishments/list')
             .map(res => res.json());
     }
 
@@ -36,6 +39,34 @@ export class EstablishmentService {
         return this.http.get('http://listfacil.com/api/public/subcategories/list/' + id)
             .map(res => res.json());
     }
+    public saveEstablishment(data) {
+        const form: FormData = new FormData();
+        form.append('imagem', data.imagem);
+        form.append('nome', data.nome);
+        form.append('id_subcategoria', data.id_subcategoria);
+        form.append('desc', data.desc);
+        form.append('facebook', data.facebook);
+        form.append('instagram', data.instagram);
+        form.append('email', data.email);
 
+        console.log(data);
+        return this.http.post('http://listfacil.com/api/public/establishments', form).toPromise().then(res => {
+            console.log(res);
+            if (res.json().status == 'true') {
+                Swal({
+                    title: 'Pronto!',
+                    text: 'Estabelecimento cadastrado com sucesso.',
+                    type: 'success'
+                })
+                //this.router.navigate(['categories']);
+            } else {
+                Swal({
+                    title: 'Ops!',
+                    text: 'Ocorreu um erro inesperado.',
+                    type: 'error'
+                });
+            }
+        });
+    }
 }
 

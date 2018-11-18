@@ -1,0 +1,11 @@
+.form-group{
+    padding: 20px !important;
+}
+
+::ng-deep .select2-container {
+    width: 100% !important;
+}
+
+::ng-deep .select2-container--default{
+    width: 100% !important;
+}
