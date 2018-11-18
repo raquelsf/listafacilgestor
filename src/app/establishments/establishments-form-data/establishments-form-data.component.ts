@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {EstablishmentService} from '../establishments.service';
 import {Establishment} from '../establishments'
 import {Categorie} from '../../categories/categorie';
@@ -14,6 +14,8 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public Establishment = new Establishment();
     public fileToUpload: File;
     public SubCategorie = 0;
+
+    @Output() btnSave = new EventEmitter();
 
     constructor(private EstablishmentService: EstablishmentService) {
         this.EstablishmentService = EstablishmentService;
@@ -36,6 +38,7 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public onSubmit(Establishment: Establishment) {
         Establishment.imagem = this.fileToUpload;
         Establishment.id_subcategoria = this.SubCategorie;
+        this.btnSave.emit();
         this.EstablishmentService.saveEstablishment(Establishment).then();
     }
 

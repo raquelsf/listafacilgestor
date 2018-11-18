@@ -36,9 +36,11 @@
     "ng2-input-mask": "0.0.7",
     "ng2-select2": "^1.0.0-beta.16",
     "ng4-mask": "^1.0.5",
+    "ngx-bootstrap": "^3.1.1",
     "ngx-ui-switch": "^1.6.0",
     "npm": "^6.4.1",
     "rxjs": "5.4.2",
+    "rxjs-compat": "^6.3.3",
     "select2": "~4.0",
     "sweetalert2": "^7.28.7",
     "to": "^0.2.9",
@@ -46,7 +48,7 @@
     "zone.js": "0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.4.2",
+    "@angular/cli": "1.6.8",
     "@angular/compiler-cli": "4.4.4",
     "@types/bootstrap": "3.3.32",
     "@types/chartist": "0.9.34",

@@ -7,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstablishmentsFormComponent implements OnInit {
   showData = true;
-  showAddress = false;
+  showAddress = true;
   showSchedule = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showAdress(){
+    this.showData = false;
+    this.showSchedule = false;
+    this.showAddress = true;
   }
 
 }
