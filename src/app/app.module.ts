@@ -36,8 +36,6 @@ import {UserService} from './user/user.service';
 
 import {EstablishmentsFormComponent} from './establishments/establishments-form/establishments-form.component';
 
-import {CepService} from './cep.service';
-
 import {DefaultLayoutComponent} from './containers';
 import { SubcategoriesListComponent } from './subcategories/subcategories-list/subcategories-list.component';
 import { EstablishmentsListComponent } from './establishments/establishments-list/establishments-list.component';
@@ -92,7 +90,6 @@ const APP_CONTAINERS = [
         CategorieService,
         SubCategorieService,
         EstablishmentService,
-        CepService,
         UserService
     ],
     bootstrap: [AppComponent]

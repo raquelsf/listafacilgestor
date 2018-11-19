@@ -1,19 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EstablishmentService} from '../establishments.service';
-import {CepService} from '../../cep.service';
 import {Cep} from '../../cep';
+import * as cep from 'cep-promise';
+import {Address} from './address';
+import {Establishment} from '../establishments';
 
 @Component({
     selector: 'app-establishments-form-address',
     templateUrl: './establishments-form-address.component.html',
     styleUrls: ['./establishments-form-address.component.css'],
-    providers: [EstablishmentService, CepService]
+    providers: [EstablishmentService]
 
 })
 export class EstablishmentsFormAddressComponent implements OnInit {
-    cep = new Cep();
+    public Cep = new Cep();
+    public Address = new Address();
 
-    constructor(private EstablishmentService: EstablishmentService, private CepService: CepService) {
+    public maskCep = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/];
+
+    @Input() idEstablishment: any;
+    @Output() btnSave = new EventEmitter();
+
+    constructor(private EstablishmentService: EstablishmentService) {
         this.EstablishmentService = EstablishmentService;
     }
 
@@ -21,10 +29,22 @@ export class EstablishmentsFormAddressComponent implements OnInit {
     }
 
     public buscar(e) {
-        console.log(e.target.value);
-        this.CepService.buscar(e.target.value)
-            .then((cep: Cep) => this.cep = cep);
-        console.log(this.cep);
+        const formatedCep = e.target.value.replace(/[^\d]+/g, '')
+        fetch('https://api.pagar.me/1/zipcodes/' + formatedCep, {method: 'get'})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.Cep = data;
+                console.log(this.Cep);
+                this.Address.cidade = this.Cep.city;
+                this.Address.rua = this.Cep.street;
+                this.Address.bairro = this.Cep.neighborhood;
+            });
     }
 
+    public onSubmit(Address: Address) {
+        this.EstablishmentService.saveEstablishmentAddress(Address, this.idEstablishment)
+        console.log(this.idEstablishment);
+        this.btnSave.emit(this.idEstablishment);
+    }
 }

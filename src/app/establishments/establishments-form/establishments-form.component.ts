@@ -1,23 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-establishments-form',
-  templateUrl: './establishments-form.component.html',
-  styleUrls: ['./establishments-form.component.css']
+    selector: 'app-establishments-form',
+    templateUrl: './establishments-form.component.html',
+    styleUrls: ['./establishments-form.component.css']
 })
 export class EstablishmentsFormComponent implements OnInit {
-  showData = true;
-  showAddress = true;
-  showSchedule = false;
-  constructor() { }
+    showData = true;
+    showAddress = false;
+    showSchedule = true;
+    idEstablishment: any;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
 
-  showAdress(){
-    this.showData = false;
-    this.showSchedule = false;
-    this.showAddress = true;
-  }
+    ngOnInit() {
+    }
 
+    btnAddress(e) {
+        console.log(e);
+        this.idEstablishment = e;
+        this.showData = false;
+        this.showSchedule = false;
+        this.showAddress = true;
+    }
+
+    btnSchedule(e) {
+        this.idEstablishment = e;
+        this.showData = false;
+        this.showAddress = false;
+        this.showSchedule = true;
+    }
 }

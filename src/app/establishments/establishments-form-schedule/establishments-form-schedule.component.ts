@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-establishments-form-schedule',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./establishments-form-schedule.component.css']
 })
 export class EstablishmentsFormScheduleComponent implements OnInit {
+  @Input() idEstablishment: any;
 
   constructor() { }
 

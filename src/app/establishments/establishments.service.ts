@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import {EstablishmentsComponent} from './establishments.component';
 import {SubCategoriesComponent} from '../subcategories/subcategories.component';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 
 @Injectable()
@@ -21,8 +21,9 @@ export class EstablishmentService {
         return this.http.get('http://listfacil.com/api/public/establishments')
             .map(res => res.json());
     }
+
     public getSubEstablishments(id): Observable<EstablishmentsComponent> {
-        return this.http.get('http://listfacil.com/api/public/establishments/list/'+ id)
+        return this.http.get('http://listfacil.com/api/public/establishments/list/' + id)
             .map(res => res.json());
     }
 
@@ -35,10 +36,12 @@ export class EstablishmentService {
         return this.http.get('http://listfacil.com/api/public/categories')
             .map(res => res.json());
     }
+
     public getSubCategoriesList(id): Observable<SubCategoriesComponent> {
         return this.http.get('http://listfacil.com/api/public/subcategories/list/' + id)
             .map(res => res.json());
     }
+
     public saveEstablishment(data) {
         const form: FormData = new FormData();
         form.append('imagem', data.imagem);
@@ -50,22 +53,13 @@ export class EstablishmentService {
         form.append('email', data.email);
 
         console.log(data);
-        return this.http.post('http://listfacil.com/api/public/establishments', form).toPromise().then(res => {
+        return this.http.post('http://listfacil.com/api/public/establishments', form).toPromise()
+
+    }
+
+    public saveEstablishmentAddress(data, id) {
+        return this.http.post('http://listfacil.com/api/public/establishments/address/' + id, data).toPromise().then(res => {
             console.log(res);
-            if (res.json().status == 'true') {
-                Swal({
-                    title: 'Pronto!',
-                    text: 'Estabelecimento cadastrado com sucesso.',
-                    type: 'success'
-                })
-                //this.router.navigate(['categories']);
-            } else {
-                Swal({
-                    title: 'Ops!',
-                    text: 'Ocorreu um erro inesperado.',
-                    type: 'error'
-                });
-            }
         });
     }
 }

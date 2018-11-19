@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {EstablishmentService} from '../establishments.service';
-import {Establishment} from '../establishments'
+import {Establishment} from '../establishments';
 import {Categorie} from '../../categories/categorie';
 
 @Component({
@@ -13,7 +13,8 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public SubCategories = [];
     public Establishment = new Establishment();
     public fileToUpload: File;
-    public SubCategorie = 0;
+    public SubCategorie = 1;
+    public idEstablishment: any;
 
     @Output() btnSave = new EventEmitter();
 
@@ -38,8 +39,16 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public onSubmit(Establishment: Establishment) {
         Establishment.imagem = this.fileToUpload;
         Establishment.id_subcategoria = this.SubCategorie;
-        this.btnSave.emit();
-        this.EstablishmentService.saveEstablishment(Establishment).then();
+        this.idEstablishment = this.EstablishmentService.saveEstablishment(Establishment)
+            .then(res => {
+                ;
+                if (res.json().status == 'true'){
+                    console.log(res.json().data);
+                    this.btnSave.emit(res.json().data.id);
+                } else {
+
+                }
+            });
     }
 
     public uploadFile(file: FileList) {
