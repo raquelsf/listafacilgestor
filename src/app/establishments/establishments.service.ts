@@ -62,5 +62,9 @@ export class EstablishmentService {
             console.log(res);
         });
     }
+
+    saveEstablishmentSchedule(data){
+        return this.http.post('http://listfacil.com/api/public/schedules', data).toPromise()
+    }
 }
 

@@ -12,7 +12,7 @@ import {NavbarModule} from './shared/navbar/navbar.module';
 import {FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import {NguiMapModule} from '@ngui/map';
 import {Select2Module} from 'ng2-select2';
-import { FormsModule } from '@angular/forms';
+import{FormBuilder, FormsModule, ReactiveFormsModule}  from '@angular/forms';
 // import {UiSwitchModule} from 'ngx-ui-switch';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -81,16 +81,18 @@ const APP_CONTAINERS = [
         BrowserModule,
         // UiSwitchModule,
         TextMaskModule,
-        FormsModule,
         AccordionModule.forRoot(),
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        FormsModule,
+        ReactiveFormsModule,
 
     ],
     providers: [
         CategorieService,
         SubCategorieService,
         EstablishmentService,
-        UserService
+        UserService,
+        FormBuilder
     ],
     bootstrap: [AppComponent]
 })
