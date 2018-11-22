@@ -8,6 +8,7 @@ import {EstablishmentsComponent} from './establishments.component';
 import {SubCategoriesComponent} from '../subcategories/subcategories.component';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {CategoriesComponent} from '../categories/categories.component';
 
 @Injectable()
 export class EstablishmentService {
@@ -58,13 +59,41 @@ export class EstablishmentService {
     }
 
     public saveEstablishmentAddress(data, id) {
-        return this.http.post('http://listfacil.com/api/public/establishments/address/' + id, data).toPromise().then(res => {
-            console.log(res);
-        });
+        return this.http.post('http://listfacil.com/api/public/establishments/address/'+id, data).toPromise();
     }
 
     saveEstablishmentSchedule(data){
-        return this.http.post('http://listfacil.com/api/public/schedules', data).toPromise()
+        return this.http.post('http://listfacil.com/api/public/schedules', data).toPromise();
+    }
+
+    public showEstablishment(id){
+        return this.http.get('http://listfacil.com/api/public/establishments/' + id)
+            .map(res => res.json());
+    }
+    public showAddres(id){
+        return this.http.get('http://listfacil.com/api/public/establishments/show/address' + id)
+            .map(res => res.json());
+    }
+
+    public deleteEstablishment(id) {
+        return this.http.delete('http://listfacil.com/api/public/establishments/'+id).toPromise().then(res => {
+            console.log(res);
+            if (res.json().status == 'true') {
+                Swal({
+                    title: 'Pronto!',
+                    text: 'Etabelecimento excluída.',
+                    type: 'success'
+                })
+                this.router.navigate(['establishments']);
+            } else {
+                Swal({
+                    title: 'Ops!',
+                    text: 'Ocorreu um erro inesperado.',
+                    type: 'error'
+                })
+            }
+        });
+
     }
 }
 

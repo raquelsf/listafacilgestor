@@ -33,9 +33,8 @@ export class EstablishmentsListComponent implements OnInit {
 
         }
     }
-    /*
     edit(e) {
-        this._router.navigate(['subcategories/edit/', e.target.id]);
+        this._router.navigate(['establishments/edit/', e.target.id]);
     }
 
     delete(e) {
@@ -48,10 +47,9 @@ export class EstablishmentsListComponent implements OnInit {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.value) {
-                this.SubCategorieService.deleteSubCategorie(e.target.id);
+                this.EstablishmentService.deleteEstablishment(e.target.id);
             }
         });
 
     }
-    */
 }

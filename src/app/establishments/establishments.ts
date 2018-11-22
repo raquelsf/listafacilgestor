@@ -3,8 +3,8 @@ export class Establishment {
     nome: string;
     desc: string;
     categoria: string;
-    id_subcategoria: number;
-    id_endereco: number;
+    id_subcategoria: any;
+    id_endereco: any;
     facebook: string;
     email: string;
     imagem: File;

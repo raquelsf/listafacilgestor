@@ -4,6 +4,7 @@ import {Cep} from '../../cep';
 import * as cep from 'cep-promise';
 import {Address} from './address';
 import {Establishment} from '../establishments';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-establishments-form-address',
@@ -21,11 +22,18 @@ export class EstablishmentsFormAddressComponent implements OnInit {
     @Input() idEstablishment: any;
     @Output() btnSave = new EventEmitter();
 
-    constructor(private EstablishmentService: EstablishmentService) {
+    constructor(private _route: ActivatedRoute,
+                private EstablishmentService: EstablishmentService) {
         this.EstablishmentService = EstablishmentService;
     }
 
     ngOnInit() {
+        this._route.paramMap.subscribe(parameterMap => {
+            const id = +parameterMap.get('id');
+            if (id > 0) {
+                this.getAddres(id);
+            }
+        });
     }
 
     public buscar(e) {
@@ -43,8 +51,24 @@ export class EstablishmentsFormAddressComponent implements OnInit {
     }
 
     public onSubmit(Address: Address) {
-        this.EstablishmentService.saveEstablishmentAddress(Address, this.idEstablishment)
         console.log(this.idEstablishment);
-        this.btnSave.emit(this.idEstablishment);
+        this.EstablishmentService.saveEstablishmentAddress(Address, this.idEstablishment)
+            .then(res => {
+                ;
+                if (res.json().status == 'true'){
+                    console.log(res.json().data);
+                    this.btnSave.emit(this.idEstablishment);
+                } else {
+
+                }
+            });
+    }
+
+    getAddres(id) {
+        this.EstablishmentService.showAddres(id)
+            .subscribe(
+                data => {
+                    this.Address = data.data;
+                });
     }
 }

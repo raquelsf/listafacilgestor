@@ -62,6 +62,10 @@ export const AppRoutes: Routes = [
             {
                 path: 'establishments/register',
                 component: EstablishmentsFormComponent
+            },
+            {
+                path: 'establishments/edit/:id',
+                component: EstablishmentsFormComponent
             }
         ]
     }

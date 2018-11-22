@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {EstablishmentService} from '../establishments.service';
 import {Establishment} from '../establishments';
 import {Categorie} from '../../categories/categorie';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-establishments-form-data',
@@ -18,7 +19,8 @@ export class EstablishmentsFormDataComponent implements OnInit {
 
     @Output() btnSave = new EventEmitter();
 
-    constructor(private EstablishmentService: EstablishmentService) {
+    constructor(private _route: ActivatedRoute,
+                private EstablishmentService: EstablishmentService) {
         this.EstablishmentService = EstablishmentService;
     }
 
@@ -27,6 +29,13 @@ export class EstablishmentsFormDataComponent implements OnInit {
             .subscribe(
                 data => this.Categories = data.data
             );
+
+        this._route.paramMap.subscribe(parameterMap => {
+            const id = +parameterMap.get('id');
+            if(id > 0){
+                this.getEstablishment(id);
+            }
+        });
     }
 
     public getSubCategories(e) {
@@ -36,9 +45,11 @@ export class EstablishmentsFormDataComponent implements OnInit {
             );
     }
 
-    public onSubmit(Establishment: Establishment) {
+    public onSubmit(Establishment) {
         Establishment.imagem = this.fileToUpload;
         Establishment.id_subcategoria = this.SubCategorie;
+        console.log(this.SubCategorie);
+        console.log(Establishment.id_subcategoria);
         this.idEstablishment = this.EstablishmentService.saveEstablishment(Establishment)
             .then(res => {
                 ;
@@ -57,5 +68,13 @@ export class EstablishmentsFormDataComponent implements OnInit {
 
     public setSubCategorie(e) {
         this.SubCategorie = e.value;
+    }
+
+    getEstablishment(id) {
+        this.EstablishmentService.showEstablishment(id)
+            .subscribe(
+                data => {
+                    this.Establishment = data.data;
+                });
     }
 }

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {EstablishmentService} from '../establishments.service';
+import {Establishment} from '../establishments';
 
 @Component({
     selector: 'app-establishments-form',
@@ -8,13 +11,24 @@ import {Component, OnInit} from '@angular/core';
 export class EstablishmentsFormComponent implements OnInit {
     showData = true;
     showAddress = false;
-    showSchedule = true;
+    showSchedule = false;
     idEstablishment: any;
+    public Establishment = new Establishment();
 
-    constructor() {
+    constructor(private _route: ActivatedRoute,
+                private EstablishmentService: EstablishmentService,) {
     }
 
     ngOnInit() {
+        this._route.paramMap.subscribe(parameterMap => {
+            const id = +parameterMap.get('id');
+            if (id > 0) {
+                this.getEstablishment(id);
+                this.showData = true;
+                this.showSchedule = true;
+                this.showAddress = true;
+            }
+        });
     }
 
     btnAddress(e) {
@@ -30,5 +44,13 @@ export class EstablishmentsFormComponent implements OnInit {
         this.showData = false;
         this.showAddress = false;
         this.showSchedule = true;
+    }
+
+    getEstablishment(id) {
+        this.EstablishmentService.showEstablishment(id)
+            .subscribe(
+                data => {
+                    this.idEstablishment = data.data.id;
+                });
     }
 }
