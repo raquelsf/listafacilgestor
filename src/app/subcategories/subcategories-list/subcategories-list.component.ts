@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
     styleUrls: ['./subcategories-list.component.css']
 })
 export class SubcategoriesListComponent implements OnInit {
-    @Input() idCategorie: 0;
+    @Input() idCategorie;
     public SubCategories = [];
 
     constructor(private SubCategorieService: SubCategorieService,
@@ -19,15 +19,15 @@ export class SubcategoriesListComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.idCategorie > 0){
+        // if (this.idCategorie){
             this.SubCategorieService.getSubCategories(this.idCategorie)
                 .subscribe(
                     data => this.SubCategories = data.data
                 );
             console.log(this.SubCategories);
-        }else {
+        // }else {
 
-        }
+        // }
 
     }
 

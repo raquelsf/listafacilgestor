@@ -6,6 +6,7 @@ export class Establishment {
     id_subcategoria: any;
     id_endereco: any;
     facebook: string;
+    instagram: string;
     email: string;
     imagem: File;
 }

@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class SubCategoriesFormComponent implements OnInit {
     public status: boolean;
     public message: string;
-    public SubCategorie: Subcategorie = new Subcategorie();
+    public SubCategorie: any;
     public Categories = [];
 
     public SubCategoriesFormComponent: SubCategoriesFormComponent;
@@ -30,7 +30,7 @@ export class SubCategoriesFormComponent implements OnInit {
             );
 
         this._route.paramMap.subscribe(parameterMap => {
-            const id = +parameterMap.get('id');
+            const id = parameterMap.get('id');
             console.log(id);
             this.getSubCategorie(id);
             console.log(this.SubCategorie);
@@ -56,7 +56,7 @@ export class SubCategoriesFormComponent implements OnInit {
 
     public onSubmit(SubCategorie: Subcategorie) {
         console.log(SubCategorie);
-        if (SubCategorie.id > 0 ) {
+        if (SubCategorie.id) {
             this.SubCategorieService.editSubCategorie(SubCategorie).then();
         } else {
             this.SubCategorieService.saveSubCategorie(SubCategorie).then();
