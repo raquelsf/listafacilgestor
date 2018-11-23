@@ -3,7 +3,7 @@ import {Establishment} from '../establishments';
 import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import {EstablishmentService} from '../establishments.service';
 import Swal from 'sweetalert2';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-establishments-form-schedule',
@@ -14,7 +14,8 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
     @Input() idEstablishment: any;
     form: FormGroup;
 
-    constructor(private formBuilder: FormBuilder,
+    constructor(private _route: ActivatedRoute,
+                private formBuilder: FormBuilder,
                 private EstablishmentService: EstablishmentService,
                 private router: Router
     ) {
@@ -36,6 +37,12 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
             {'dia': 7, label: 'Sabádo', aberto: 0, fechado: 0},
         ];
 
+        this._route.paramMap.subscribe(parameterMap => {
+            const id = +parameterMap.get('id');
+            if (id > 0) {
+                this.getSchedule(id);
+            }
+        });
     }
 
     public onSubmit(data) {
@@ -47,8 +54,8 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                         title: 'Pronto!',
                         text: 'Estabelecimento cadastrado com sucesso.',
                         type: 'success'
-                    })
-                   this.router.navigate(['establishments']);
+                    });
+                    this.router.navigate(['establishments']);
                 } else {
                     Swal({
                         title: 'Ops!',
@@ -105,10 +112,26 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
             7: this.formBuilder.group({
                 dia: ['7'],
                 aberto: [''],
-                fechado: [''],
+                fechado: [(this.itens[0]) ? this.itens[0].fechado : ''],
                 id_estabelecimento: this.idEstablishment,
 
             }),
         });
+    }
+
+    getSchedule(id) {
+        console.log(id);
+        this.EstablishmentService.showSchedule(id)
+            .subscribe(
+                data => {
+                    this.itens = data.data;
+                    data.data.forEach(
+                        item => {
+                            this.form.get(item.id + '.dia').setValue(item.dia);
+                            this.form.get(item.id + '.aberto').setValue(item.aberto);
+                            this.form.get(item.id + '.fechado').setValue(item.fechado);
+                            this.form.get(item.id + '.id_estabelecimento').setValue(item.id_estabelecimento);
+                        });
+                });
     }
 }

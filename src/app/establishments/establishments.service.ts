@@ -71,7 +71,11 @@ export class EstablishmentService {
             .map(res => res.json());
     }
     public showAddres(id){
-        return this.http.get('http://listfacil.com/api/public/establishments/show/address' + id)
+        return this.http.get('http://listfacil.com/api/public/establishments/address/' + id)
+            .map(res => res.json());
+    }
+    public showSchedule(id){
+        return this.http.get('http://listfacil.com/api/public/schedules/' + id)
             .map(res => res.json());
     }
 

@@ -23,6 +23,7 @@ export class EstablishmentsFormComponent implements OnInit {
         this._route.paramMap.subscribe(parameterMap => {
             const id = +parameterMap.get('id');
             if (id > 0) {
+
                 this.getEstablishment(id);
                 this.showData = true;
                 this.showSchedule = true;
@@ -51,6 +52,7 @@ export class EstablishmentsFormComponent implements OnInit {
             .subscribe(
                 data => {
                     this.idEstablishment = data.data.id;
+                    console.log(this.idEstablishment);
                 });
     }
 }
