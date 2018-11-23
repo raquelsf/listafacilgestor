@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./promotions.component.css']
 })
 export class PromotionsComponent implements OnInit {
-
+    Promotions = [
+        id => 1 ,
+        estabelecimento => 'Bills Lanches'
+    ];
   constructor() { }
 
   ngOnInit() {

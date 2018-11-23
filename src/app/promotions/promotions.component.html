@@ -1,3 +1,36 @@
-<p>
-  promotions works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <div class="col-md-6 text-left">
+            <h4 class="title">Controle de Promoções</h4>
+          </div>
+          <div class="col-md-6 text-right">
+            <a class="btn btn-default btn-fill btn-wd" [routerLink]='["register"]' >Cadastrar Promoção</a>
+          </div>
+        </div>
+        <div class=" row">
+          <div class="col-sm-3" *ngFor="let row of Promotions">
+            <div class="card">
+              <div class="card-body">
+                <div>
+                  <img src="../../assets/img/promo1.jpg" alt="Card image cap" class="promo" style=" width: 70% !important;
+    margin-left: 15% !important;">
+                </div>
+                <h5 class="card-title">{{row.estabelecimento}}</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <a class="btn btn-default btn-fill btn-xs" (click)="edit($event)" id="{{ row.id }}" >Editar</a>
+                    <a class="btn btn-danger btn-fill btn-xs"(click)="delete($event)" id="{{ row.id }}">Excluir</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
