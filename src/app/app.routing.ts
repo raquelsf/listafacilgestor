@@ -12,6 +12,7 @@ import {EstablishmentsComponent} from './establishments/establishments.component
 import {EstablishmentsFormComponent} from './establishments/establishments-form/establishments-form.component';
 
 import {DefaultLayoutComponent} from './containers';
+import {PromotionsComponent} from './promotions/promotions.component';
 
 export const AppRoutes: Routes = [
     {
@@ -58,6 +59,10 @@ export const AppRoutes: Routes = [
             {
                 path: 'establishments',
                 component: EstablishmentsComponent
+            },
+            {
+                path: 'promotions',
+                component: PromotionsComponent
             },
             {
                 path: 'establishments/register',

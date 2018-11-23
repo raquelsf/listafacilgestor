@@ -13,7 +13,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
     { path: '/categories', title: 'Categorias',  icon:'ti-view-list-alt', class: '' },
     { path: '/subcategories', title: 'SubCategorias',  icon:'ti-align-left', class: '' },
-    { path: '/establishments', title: 'Estabelecimentos',  icon:'ti-shopping-cart', class: '' }
+    { path: '/establishments', title: 'Estabelecimentos',  icon:'ti-shopping-cart', class: '' },
+    { path: '/promotions', title: 'Promoções',  icon:'ti-image', class: '' }
 ];
  
 @Component({

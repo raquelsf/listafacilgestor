@@ -45,6 +45,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { EstablishmentsFormAddressComponent } from './establishments/establishments-form-address/establishments-form-address.component';
 import { EstablishmentsFormDataComponent } from './establishments/establishments-form-data/establishments-form-data.component';
 import { EstablishmentsFormScheduleComponent } from './establishments/establishments-form-schedule/establishments-form-schedule.component';
+import { PromotionsComponent } from './promotions/promotions.component';
 const APP_CONTAINERS = [
     DefaultLayoutComponent
 ];
@@ -66,7 +67,8 @@ const APP_CONTAINERS = [
         EstablishmentsListComponent,
         EstablishmentsFormAddressComponent,
         EstablishmentsFormDataComponent,
-        EstablishmentsFormScheduleComponent
+        EstablishmentsFormScheduleComponent,
+        PromotionsComponent
     ],
     imports: [
         HttpModule,
