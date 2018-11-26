@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 @Injectable()
 export class CategorieService {
     public headers: Headers;
-
+    public form;
     constructor(
         private http: Http,
         private router: Router
@@ -38,12 +38,11 @@ export class CategorieService {
             .map(res => res.json());
     }
 
-
     public saveCategorie(data) {
-        const form: FormData = new FormData();
-        form.append('file', data.file);
-        form.append('nome', data.nome);
-        return this.http.post('http://listfacil.com/api/public/categories', form).toPromise().then(res => {
+        this.form = new FormData();
+        this.form.append('file', data.file);
+        this.form.append('nome', data.nome);
+        return this.http.post('http://listfacil.com/api/public/categories', this.form).toPromise().then(res => {
             console.log(res);
             if (res.json().status == 'true') {
                 Swal({
@@ -61,16 +60,50 @@ export class CategorieService {
             }
         });
     }
+
+    public updateCategorie(data) {
+        if (data.file != undefined) {
+            const formData: FormData = new FormData();
+            formData.append('file', data.file);
+            formData.append('nome', data.nome);
+            formData.append('id', data.id);
+            this.form = formData;
+
+        } else{
+            this.form = data;
+        }
+console.log(this.form);
+        return this.http.post('http://listfacil.com/api/public/categories/' + data.id, this.form).toPromise().then(res => {
+            console.log(res);
+            if (res.json().status == 'true') {
+                Swal({
+                    title: 'Pronto!',
+                    text: 'Categoria atualizada com sucesso.',
+                    type: 'success'
+                })
+                this.router.navigate(['categories']);
+            } else {
+                Swal({
+                    title: 'Ops!',
+                    text: 'Ocorreu um erro inesperado.',
+                    type: 'error'
+                });
+            }
+        });
+    }
+
     public deleteCategorie(id) {
-        return this.http.delete('http://listfacil.com/api/public/categories/'+id).toPromise().then(res => {
+        return this.http.delete('http://listfacil.com/api/public/categories/' + id).toPromise().then(res => {
             console.log(res);
             if (res.json().status == 'true') {
                 Swal({
                     title: 'Pronto!',
                     text: 'Categoria excluída.',
                     type: 'success'
-                })
-                this.router.navigate(['categories']);
+                }).then( data => {
+                        this.router.navigate(['categories'],
+                    )},
+                );
             } else {
                 Swal({
                     title: 'Ops!',

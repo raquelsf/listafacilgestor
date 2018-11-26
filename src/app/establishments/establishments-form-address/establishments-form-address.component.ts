@@ -53,16 +53,20 @@ export class EstablishmentsFormAddressComponent implements OnInit {
 
     public onSubmit(Address: Address) {
         console.log(this.idEstablishment);
-        this.EstablishmentService.saveEstablishmentAddress(Address, this.idEstablishment)
-            .then(res => {
-                ;
-                if (res.json().status == 'true') {
-                    console.log(res.json().data);
-                    this.btnSave.emit(this.idEstablishment);
-                } else {
+        if (Address.id != undefined) {
+            this.EstablishmentService.updateEstablishmentAddress(Address)
+        } else {
+            this.EstablishmentService.saveEstablishmentAddress(Address, this.idEstablishment)
+                .then(res => {
+                    ;
+                    if (res.json().status == 'true') {
+                        console.log(res.json().data);
+                        this.btnSave.emit(this.idEstablishment);
+                    } else {
 
-                }
-            });
+                    }
+                });
+        }
     }
 
     getAddres(id) {

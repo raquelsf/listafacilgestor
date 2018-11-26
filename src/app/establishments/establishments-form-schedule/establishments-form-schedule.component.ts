@@ -25,7 +25,6 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
     public mask = [/[0-9]/, /[0-9]/, ':', /[0-9]/, /[0-9]/];
     public itens = [];
-
     ngOnInit() {
         this.itens = [
             {'dia': 1, label: 'Domingo', aberto: 0, fechado: 0},
@@ -39,16 +38,17 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
         this._route.paramMap.subscribe(parameterMap => {
             const id = +parameterMap.get('id');
+
             if (id > 0) {
+                this.idEstablishment = id;
                 this.getSchedule(id);
             }
         });
     }
 
     public onSubmit(data) {
-        this.EstablishmentService.saveEstablishmentSchedule(data)
+        this.EstablishmentService.saveEstablishmentSchedule(data, this.idEstablishment)
             .then(res => {
-                ;
                 if (res.json().status == 'true') {
                     Swal({
                         title: 'Pronto!',
@@ -69,12 +69,14 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
     getFormSchedule() {
         return this.formBuilder.group({
             1: this.formBuilder.group({
+                label: ['Domingo'],
                 dia: ['1'],
                 aberto: [''],
                 fechado: [''],
                 id_estabelecimento: this.idEstablishment,
             }),
             2: this.formBuilder.group({
+                label: ['Segunda feira'],
                 dia: ['2'],
                 aberto: [''],
                 fechado: [''],
@@ -82,6 +84,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
             }),
             3: this.formBuilder.group({
+                label: ['Terça feira'],
                 dia: ['3'],
                 aberto: [''],
                 fechado: [''],
@@ -89,6 +92,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
             }),
             4: this.formBuilder.group({
+                label: ['Quarta feira'],
                 dia: ['4'],
                 aberto: [''],
                 fechado: [''],
@@ -96,6 +100,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
             }),
             5: this.formBuilder.group({
+                label: ['Quinta feira'],
                 dia: ['5'],
                 aberto: [''],
                 fechado: [''],
@@ -103,6 +108,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
             }),
             6: this.formBuilder.group({
+                label: ['Sexta feira'],
                 dia: ['6'],
                 aberto: [''],
                 fechado: [''],
@@ -110,9 +116,10 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
 
             }),
             7: this.formBuilder.group({
+                label: ['Sabádo'],
                 dia: ['7'],
                 aberto: [''],
-                fechado: [(this.itens[0]) ? this.itens[0].fechado : ''],
+                fechado: [''],
                 id_estabelecimento: this.idEstablishment,
 
             }),
@@ -125,12 +132,14 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
             .subscribe(
                 data => {
                     this.itens = data.data;
+                    console.log(this.itens);
                     data.data.forEach(
                         item => {
-                            this.form.get(item.id + '.dia').setValue(item.dia);
-                            this.form.get(item.id + '.aberto').setValue(item.aberto);
-                            this.form.get(item.id + '.fechado').setValue(item.fechado);
-                            this.form.get(item.id + '.id_estabelecimento').setValue(item.id_estabelecimento);
+                            this.form.get(item.dia + '.label').setValue(item.label);
+                            this.form.get(item.dia + '.dia').setValue(item.dia);
+                            this.form.get(item.dia + '.aberto').setValue(item.aberto);
+                            this.form.get(item.dia + '.fechado').setValue(item.fechado);
+                            this.form.get(item.dia + '.id_estabelecimento').setValue(item.id_estabelecimento);
                         });
                 });
     }

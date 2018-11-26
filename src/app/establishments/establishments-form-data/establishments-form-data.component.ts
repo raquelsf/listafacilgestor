@@ -16,7 +16,7 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public fileToUpload: File;
     public SubCategorie = 1;
     public idEstablishment: any;
-
+    nome;
     @Output() btnSave = new EventEmitter();
 
     constructor(private _route: ActivatedRoute,
@@ -48,18 +48,20 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public onSubmit(Establishment) {
         Establishment.imagem = this.fileToUpload;
         Establishment.id_subcategoria = this.SubCategorie;
-        console.log(this.SubCategorie);
-        console.log(Establishment.id_subcategoria);
-        this.idEstablishment = this.EstablishmentService.saveEstablishment(Establishment)
-            .then(res => {
-                ;
-                if (res.json().status == 'true'){
-                    console.log(res.json().data);
-                    this.btnSave.emit(res.json().data.id);
-                } else {
+        if(Establishment.id != undefined){
+            this.EstablishmentService.updateEstablishment(Establishment);
+        }else{
+            this.idEstablishment = this.EstablishmentService.saveEstablishment(Establishment)
+                .then(res => {
+                    if (res.json().status == 'true'){
+                        console.log(res.json().data);
+                        this.btnSave.emit(res.json().data.id);
+                    } else {
 
-                }
-            });
+                    }
+                });
+        }
+
     }
 
     public uploadFile(file: FileList) {

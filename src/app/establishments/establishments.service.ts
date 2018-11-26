@@ -12,6 +12,8 @@ import {CategoriesComponent} from '../categories/categories.component';
 
 @Injectable()
 export class EstablishmentService {
+    public form;
+
     constructor(
         private http: Http,
         private router: Router
@@ -54,16 +56,70 @@ export class EstablishmentService {
         form.append('email', data.email);
 
         console.log(data);
-        return this.http.post('http://listfacil.com/api/public/establishments', form).toPromise()
+        return this.http.post('http://listfacil.com/api/public/establishments', form).toPromise();
 
+    }
+
+    public updateEstablishment(data) {
+        if(data.imagem){
+            const formData: FormData = new FormData();
+            formData.append('imagem', data.imagem);
+            formData.append('nome', data.nome);
+            formData.append('id_subcategoria', data.id_subcategoria);
+            formData.append('desc', data.desc);
+            formData.append('facebook', data.facebook);
+            formData.append('instagram', data.instagram);
+            formData.append('email', data.email);
+            formData.append('id', data.id);
+            this.form = formData;
+        }else {
+            this.form = data;
+        }
+        return this.http.post('http://listfacil.com/api/public/establishments/' + data.id, this.form).toPromise().then(res => {
+            console.log(res);
+            if (res.json().status == 'true') {
+                Swal({
+                    title: 'Pronto!',
+                    text: 'Etabelecimento atualizado.',
+                    type: 'success'
+                })
+            } else {
+                Swal({
+                    title: 'Ops!',
+                    text: 'Ocorreu um erro inesperado.',
+                    type: 'error'
+                })
+            }
+        });
     }
 
     public saveEstablishmentAddress(data, id) {
         return this.http.post('http://listfacil.com/api/public/establishments/address/'+id, data).toPromise();
     }
 
-    saveEstablishmentSchedule(data){
-        return this.http.post('http://listfacil.com/api/public/schedules', data).toPromise();
+
+    updateEstablishmentAddress(data){
+        return this.http.post('http://listfacil.com/api/public/establishments/address/update/'+data.id, data).toPromise().then(res => {
+            console.log(res);
+            if (res.json().status == 'true') {
+                Swal({
+                    title: 'Pronto!',
+                    text: 'Etabelecimento atualizado.',
+                    type: 'success'
+                })
+            } else {
+                Swal({
+                    title: 'Ops!',
+                    text: 'Ocorreu um erro inesperado.',
+                    type: 'error'
+                })
+            }
+        });
+    }
+
+    saveEstablishmentSchedule(data, id){
+
+        return this.http.post('http://listfacil.com/api/public/schedules/' + id, data).toPromise();
     }
 
     public showEstablishment(id){
@@ -85,7 +141,7 @@ export class EstablishmentService {
             if (res.json().status == 'true') {
                 Swal({
                     title: 'Pronto!',
-                    text: 'Etabelecimento excluída.',
+                    text: 'Etabelecimento excluído.',
                     type: 'success'
                 })
                 this.router.navigate(['establishments']);

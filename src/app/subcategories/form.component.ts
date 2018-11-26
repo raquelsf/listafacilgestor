@@ -12,9 +12,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class SubCategoriesFormComponent implements OnInit {
     public status: boolean;
     public message: string;
-    public SubCategorie: any;
+    public SubCategorie = new Subcategorie();
     public Categories = [];
-
+    id_categoria;
+    nome;
     public SubCategoriesFormComponent: SubCategoriesFormComponent;
 
     constructor(private SubCategorieService: SubCategorieService,
@@ -24,16 +25,16 @@ export class SubCategoriesFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.SubCategorieService.getCategories()
-            .subscribe(
-                data => this.Categories = data.data
-            );
+
 
         this._route.paramMap.subscribe(parameterMap => {
             const id = parameterMap.get('id');
-            console.log(id);
-            this.getSubCategorie(id);
-            console.log(this.SubCategorie);
+            if (id != undefined) {
+                this.getSubCategorie(id);
+                console.log(this.SubCategorie);
+            } else {
+            }
+            this.getCategorie();
         });
     }
 
@@ -45,21 +46,22 @@ export class SubCategoriesFormComponent implements OnInit {
                     this.SubCategorie.nome = data.data['nome'];
                     this.SubCategorie.id = data.data['id'];
                     this.SubCategorie.id_categoria = data.data['id_categoria'];
-                    // if (data.status == true) {
-                    //     console.log(data.data['nome']);
-                    // } else {
-                    //     // this.vazio = true;
-                    // }
-
                 });
     }
 
     public onSubmit(SubCategorie: Subcategorie) {
         console.log(SubCategorie);
-        if (SubCategorie.id) {
+        if (SubCategorie.id != undefined) {
             this.SubCategorieService.editSubCategorie(SubCategorie).then();
         } else {
             this.SubCategorieService.saveSubCategorie(SubCategorie).then();
         }
+    }
+
+    getCategorie() {
+        this.SubCategorieService.getCategories()
+            .subscribe(
+                data => this.Categories = data.data
+            );
     }
 }

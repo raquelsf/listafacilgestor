@@ -30,3 +30,8 @@
 .switch.switch-medium{
     background-color: rgb(12, 155, 19) !important;
 }
+
+
+::ng-deep .alert-danger {
+    background-color: #FFFFFF !important;
+}

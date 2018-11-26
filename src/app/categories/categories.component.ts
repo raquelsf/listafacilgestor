@@ -31,11 +31,7 @@ export class CategoriesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.CategorieService.getCategories()
-            .subscribe(
-                data => this.Categories = data.data
-            );
-        console.log(this.Categories);
+        this.getCategories();
     }
 
     edit(e) {
@@ -53,9 +49,17 @@ export class CategoriesComponent implements OnInit {
         }).then((result) => {
             if (result.value) {
                 this.CategorieService.deleteCategorie(e.target.id);
+                this.getCategories();
             }
-        })
+        });
 
+    }
+
+    getCategories(){
+        this.CategorieService.getCategories()
+            .subscribe(
+                data => this.Categories = data.data
+            );
     }
 
 }

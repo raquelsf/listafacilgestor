@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {CategorieService} from './categories.service';
 import {Categorie} from './categorie';
 import {ActivatedRoute, Router} from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
     selector: 'categorieform-cmp',
     moduleId: module.id,
     templateUrl: 'categoriesForm.component.html',
+    styleUrls: ['categoriesForm.component.css'],
     providers: [CategorieService]
 })
 export class CategoriesFormComponent implements OnInit {
@@ -14,6 +16,8 @@ export class CategoriesFormComponent implements OnInit {
     public message: string;
     public Categorie: Categorie = new Categorie();
     public fileToUpload: File;
+    name;
+    errors;
     public CategoriesFormComponent: CategoriesFormComponent;
 
     constructor(private CategorieService: CategorieService,
@@ -28,14 +32,30 @@ export class CategoriesFormComponent implements OnInit {
             console.log(id);
             this.getCategorie(id);
             // this.Categorie = this.Categorie[0];
-            console.log(this.Categorie);
         });
     }
 
 
     public onSubmit(Categorie: Categorie) {
         Categorie.file = this.fileToUpload;
-        this.CategorieService.saveCategorie(Categorie).then();
+        if (Categorie.id){
+            if(! Categorie.nome){
+                this.errors.nome == true;
+            } else{
+                this.CategorieService.updateCategorie(Categorie).then(data=>{
+                });
+            }
+        } else {
+            if ( !Categorie.file ){
+                this.errors.imagem == true;
+
+            } else if(! Categorie.nome){
+                this.errors.nome == true;
+            } else{
+                this.CategorieService.saveCategorie(Categorie).then();
+            }
+
+        }
     }
 
     public uploadFile(file: FileList) {
@@ -46,9 +66,9 @@ export class CategoriesFormComponent implements OnInit {
         this.CategorieService.showCategorie(id)
             .subscribe(
                 data => {
-                    console.log(data.data['nome']);
                     this.Categorie.nome = data.data['nome'];
                     this.Categorie.imagem = data.data['imagem'];
+                    this.Categorie.id = data.data['id'];
                     // if (data.status == true) {
                     //     console.log(data.data['nome']);
                     // } else {
