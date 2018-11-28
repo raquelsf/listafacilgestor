@@ -27,13 +27,13 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
     public itens = [];
     ngOnInit() {
         this.itens = [
-            {'dia': 1, label: 'Domingo', aberto: 0, fechado: 0},
-            {'dia': 2, label: 'Segunda Feira', aberto: 0, fechado: 0},
-            {'dia': 3, label: 'Terça Feira', aberto: 0, fechado: 0},
-            {'dia': 4, label: 'Quarta Feira', aberto: 0, fechado: 0},
-            {'dia': 5, label: 'Quinta Feira', aberto: 0, fechado: 0},
-            {'dia': 6, label: 'Sexta Feira', aberto: 0, fechado: 0},
-            {'dia': 7, label: 'Sabádo', aberto: 0, fechado: 0},
+            {'dia': 1, label: 'Domingo', aberto: 0, fechado: 0,  id_estabelecimento: this.idEstablishment},
+            {'dia': 2, label: 'Segunda Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
+            {'dia': 3, label: 'Terça Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
+            {'dia': 4, label: 'Quarta Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
+            {'dia': 5, label: 'Quinta Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
+            {'dia': 6, label: 'Sexta Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
+            {'dia': 7, label: 'Sabádo', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
         ];
 
         this._route.paramMap.subscribe(parameterMap => {
@@ -73,14 +73,14 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                 dia: ['1'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
             }),
             2: this.formBuilder.group({
                 label: ['Segunda feira'],
                 dia: ['2'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
 
             }),
             3: this.formBuilder.group({
@@ -88,7 +88,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                 dia: ['3'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
 
             }),
             4: this.formBuilder.group({
@@ -96,7 +96,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                 dia: ['4'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
 
             }),
             5: this.formBuilder.group({
@@ -104,7 +104,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                 dia: ['5'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
 
             }),
             6: this.formBuilder.group({
@@ -112,7 +112,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                 dia: ['6'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
 
             }),
             7: this.formBuilder.group({
@@ -120,7 +120,7 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
                 dia: ['7'],
                 aberto: [''],
                 fechado: [''],
-                id_estabelecimento: this.idEstablishment,
+                id_estabelecimento: [this.idEstablishment],
 
             }),
         });
