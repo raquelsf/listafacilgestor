@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">SubCategoria:</label>
                         <div class="col-sm-8 col-md-8 col-lg-9">
-                            <select2 [data]="SubCategories" class="select2" (change)="setSubCategorie($event)"></select2>
+                            <select2 [data]="SubCategories" class="select2" (valueChanged)="setSubCategorie($event)"></select2>
                         </div>
                     </div>
                 </div>
@@ -85,15 +85,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Email:</label>
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Email:  <small>(opcional)</small></label>
                         <div class="col-sm-8 col-md-8 col-lg-9">
-                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.email" name="email" required minlength="5" #email="ngModel">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.email" name="email" minlength="5" #email="ngModel">
 
                             <div *ngIf="email.invalid && (email.dirty || email.touched)"
                                  class="alert alert-danger" style=" background-color: #FFFFFF !important;">
-                                <div *ngIf="email.errors.required">
-                                    Informe uma email.
-                                </div>
                                 <div *ngIf="email.errors.minlength">
                                     O email do Estabelecimento deve ter pelo menos 5 caracteres.
                                 </div>
@@ -105,15 +102,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Facebook:</label>
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Facebook: <small>opcional)</small></label>
                         <div class="col-sm-8 col-md-8 col-lg-9">
-                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.facebook" name="facebook" required minlength="10" #facebook="ngModel">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.facebook" name="facebook"  minlength="10" #facebook="ngModel">
 
                             <div *ngIf="facebook.invalid && (facebook.dirty || facebook.touched)"
                                  class="alert alert-danger" style=" background-color: #FFFFFF !important;">
-                                <div *ngIf="facebook.errors.required">
-                                    Informe um link do facebook.
-                                </div>
+
                                 <div *ngIf="desc.errors.minlength">
                                     A facebook do Estabelecimento deve ter pelo menos 10 caracteres.
                                 </div>
@@ -125,15 +120,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Instagram:</label>
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Instagram:  <small>(opcional)</small></label>
                         <div class="col-sm-8 col-md-8 col-lg-9">
-                            <input type="text" class="form-control border-input"  [(ngModel)]="Establishment.instagram" name="instagram" required minlength="5" #insta="ngModel">
+                            <input type="text" class="form-control border-input"  [(ngModel)]="Establishment.instagram" name="instagram" minlength="5" #insta="ngModel">
 
                             <div *ngIf="insta.invalid && (insta.dirty || insta.touched)"
                                  class="alert alert-danger" style=" background-color: #FFFFFF !important;">
-                                <div *ngIf="insta.errors.required">
-                                    Informe um instagran.
-                                </div>
                                 <div *ngIf="insta.errors.minlength">
                                     A descrição do Estabelecimento deve ter pelo menos 10 caracteres.
                                 </div>

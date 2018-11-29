@@ -5,6 +5,7 @@ import * as cep from 'cep-promise';
 import {Address} from './address';
 import {Establishment} from '../establishments';
 import {ActivatedRoute} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-establishments-form-address',
@@ -58,12 +59,19 @@ export class EstablishmentsFormAddressComponent implements OnInit {
         } else {
             this.EstablishmentService.saveEstablishmentAddress(Address, this.idEstablishment)
                 .then(res => {
-                    ;
                     if (res.json().status == 'true') {
-                        console.log(res.json().data);
+                        Swal({
+                            title: 'Tudo certo ate aqui!',
+                            text: '',
+                            type: 'success'
+                        });
                         this.btnSave.emit(this.idEstablishment);
                     } else {
-
+                        Swal({
+                            title: 'Ops!',
+                            text: 'Ocorreu um erro inesperado.',
+                            type: 'error'
+                        });
                     }
                 });
         }

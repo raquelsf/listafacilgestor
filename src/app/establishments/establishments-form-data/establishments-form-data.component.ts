@@ -3,6 +3,7 @@ import {EstablishmentService} from '../establishments.service';
 import {Establishment} from '../establishments';
 import {Categorie} from '../../categories/categorie';
 import {ActivatedRoute} from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
     selector: 'app-establishments-form-data',
@@ -32,7 +33,7 @@ export class EstablishmentsFormDataComponent implements OnInit {
 
         this._route.paramMap.subscribe(parameterMap => {
             const id = +parameterMap.get('id');
-            if(id > 0){
+            if (id > 0) {
                 this.getEstablishment(id);
             }
         });
@@ -48,20 +49,37 @@ export class EstablishmentsFormDataComponent implements OnInit {
     public onSubmit(Establishment) {
         Establishment.imagem = this.fileToUpload;
         Establishment.id_subcategoria = this.SubCategorie;
-        if(Establishment.id != undefined){
+        console.log(Establishment);
+        if (Establishment.email == undefined) {
+            Establishment.email = '';
+        }
+        if (Establishment.instagram == undefined) {
+            Establishment.instagram = '';
+        }
+        if (Establishment.facebook == undefined) {
+            Establishment.facebook = '';
+        }
+        if (Establishment.id != undefined) {
             this.EstablishmentService.updateEstablishment(Establishment);
-        }else{
+        } else {
             this.idEstablishment = this.EstablishmentService.saveEstablishment(Establishment)
                 .then(res => {
-                    if (res.json().status == 'true'){
-                        console.log(res.json().data);
+                    if (res.json().status == 'true') {
+                        Swal({
+                            title: 'Tudo certo ate aqui!',
+                            text: '',
+                            type: 'success'
+                        });
                         this.btnSave.emit(res.json().data.id);
                     } else {
-
+                        Swal({
+                            title: 'Ops!',
+                            text: 'Ocorreu um erro inesperado.',
+                            type: 'error'
+                        });
                     }
                 });
         }
-
     }
 
     public uploadFile(file: FileList) {

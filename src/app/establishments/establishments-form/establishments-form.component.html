@@ -4,16 +4,16 @@
             <div class="card">
                 <tabset>
 
-                    <tab [heading]="'Dados do Local'" [disabled]="!showData" [active]="showData">
+                    <tab [heading]="'Dados do Local'" [active]="showData">
                         <app-establishments-form-data
                             (btnSave)="btnAddress($event)"></app-establishments-form-data>
                     </tab>
-                    <tab [heading]="'Dados de Endereço'" [disabled]="!showAddress">
+                    <tab [heading]="'Dados de Endereço'" [active]="showAddress">
                         <app-establishments-form-address
                                 [idEstablishment]="idEstablishment"
                                 (btnSave)="btnSchedule($event)"></app-establishments-form-address>
                     </tab>
-                    <tab [heading]="'Horarios de Funcionamento'" [disabled]="!showSchedule">
+                    <tab [heading]="'Horarios de Funcionamento'" [active]="showSchedule">
                         <app-establishments-form-schedule
                                 [idEstablishment]="idEstablishment"></app-establishments-form-schedule>
                     </tab>
