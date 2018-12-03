@@ -26,6 +26,7 @@ export class UserService {
     public login(data) {
         return this.http.post('http://listfacil.com/api/public/login', data)
             .toPromise().then(res => {
+                console.log(res);
                 if (res.json().status == 'false') {
                     this.usuarioAutenticado = false;
                     this.emitter.next(false);

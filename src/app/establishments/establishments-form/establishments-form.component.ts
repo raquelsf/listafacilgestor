@@ -33,7 +33,6 @@ export class EstablishmentsFormComponent implements OnInit {
     }
 
     btnAddress(e) {
-        console.log(e);
         this.idEstablishment = e;
         this.showData = false;
         this.showSchedule = false;

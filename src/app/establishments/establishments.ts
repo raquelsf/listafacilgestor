@@ -8,5 +8,7 @@ export class Establishment {
     facebook: string;
     instagram: string;
     email: string;
+    telefone: string;
+    telefone2: string;
     imagem: File;
 }

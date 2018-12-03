@@ -25,6 +25,9 @@ export class EstablishmentsFormDataComponent implements OnInit {
         this.EstablishmentService = EstablishmentService;
     }
 
+    public maskPhone = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/];
+
+
     ngOnInit() {
         this.EstablishmentService.getCategories()
             .subscribe(
@@ -52,6 +55,9 @@ export class EstablishmentsFormDataComponent implements OnInit {
         console.log(Establishment);
         if (Establishment.email == undefined) {
             Establishment.email = '';
+        }
+        if (Establishment.telefone2 == undefined) {
+            Establishment.telefone2 = '';
         }
         if (Establishment.instagram == undefined) {
             Establishment.instagram = '';

@@ -83,6 +83,41 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-sm-6 col-md-6 col-lg-6 control-label">Telefone Principal:</label>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.telefone" name="telefone" minlength="10" required #telefone="ngModel">
+
+                            <div *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)"
+                                 class="alert alert-danger" style=" background-color: #FFFFFF !important;">
+                                <div *ngIf="nome.errors.required">
+                                    Informe um Nome
+                                </div>
+                                <div *ngIf="telefone.errors.minlength">
+                                    O email do Estabelecimento deve ter pelo menos 10 caracteres.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 col-md-4 col-lg-3 control-label">Telefone Secundario:  <small>(opcional)</small></label>
+                        <div class="col-sm-6 col-md-8 col-lg-9">
+                            <input type="text" class="form-control border-input" [(ngModel)]="Establishment.telefone2" name="telefone2" minlength="10" #telefone2="ngModel">
+
+                            <div *ngIf="telefone2.invalid && (telefone2.dirty || telefone2.touched)"
+                                 class="alert alert-danger" style=" background-color: #FFFFFF !important;">
+                                <div *ngIf="telefone2.errors.minlength">
+                                    O email do Estabelecimento deve ter pelo menos 10 caracteres.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
                         <label class="col-sm-4 col-md-4 col-lg-3 control-label">Email:  <small>(opcional)</small></label>
