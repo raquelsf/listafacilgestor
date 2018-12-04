@@ -10,8 +10,8 @@ import {Establishment} from '../establishments';
 })
 export class EstablishmentsFormComponent implements OnInit {
     showData = true;
-    showAddress = true;
-    showSchedule = true;
+    showAddress = false;
+    showSchedule = false;
     idEstablishment: any;
     public Establishment = new Establishment();
 

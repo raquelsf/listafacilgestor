@@ -27,18 +27,16 @@ export class EstablishmentsFormScheduleComponent implements OnInit {
     public itens = [];
     ngOnInit() {
         this.itens = [
-            {'dia': 1, label: 'Domingo', aberto: 0, fechado: 0,  id_estabelecimento: this.idEstablishment},
-            {'dia': 2, label: 'Segunda Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
-            {'dia': 3, label: 'Terça Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
-            {'dia': 4, label: 'Quarta Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
-            {'dia': 5, label: 'Quinta Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
-            {'dia': 6, label: 'Sexta Feira', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
-            {'dia': 7, label: 'Sabádo', aberto: 0, fechado: 0, id_estabelecimento: this.idEstablishment},
-        ];
+    {'dia': 1, label: 'Domingo', aberto: '00:00', fechado: '00:00',  id_estabelecimento: this.idEstablishment},
+    {'dia': 2, label: 'Segunda Feira', aberto: '00:00', fechado: '00:00', id_estabelecimento: this.idEstablishment},
+    {'dia': 3, label: 'Terça Feira', aberto: '00:00', fechado: '00:00', id_estabelecimento: this.idEstablishment},
+    {'dia': 4, label: 'Quarta Feira', aberto: '00:00', fechado: '00:00', id_estabelecimento: this.idEstablishment},
+    {'dia': 5, label: 'Quinta Feira', aberto: '00:00', fechado: '00:00', id_estabelecimento: this.idEstablishment},
+    {'dia': 6, label: 'Sexta Feira', aberto: '00:00', fechado: '00:00', id_estabelecimento: this.idEstablishment},
+    {'dia': 7, label: 'Sabádo', aberto: '00:00', fechado: '00:00', id_estabelecimento: this.idEstablishment}];
 
         this._route.paramMap.subscribe(parameterMap => {
             const id = +parameterMap.get('id');
-
             if (id > 0) {
                 this.idEstablishment = id;
                 this.getSchedule(id);
