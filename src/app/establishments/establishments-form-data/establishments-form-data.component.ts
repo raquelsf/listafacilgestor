@@ -24,8 +24,9 @@ export class EstablishmentsFormDataComponent implements OnInit {
                 private EstablishmentService: EstablishmentService) {
         this.EstablishmentService = EstablishmentService;
     }
+    public maskPhone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
-    public maskPhone = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/];
+    public maskPhone2= ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
 
     ngOnInit() {

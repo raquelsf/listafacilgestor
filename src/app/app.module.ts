@@ -12,7 +12,7 @@ import {NavbarModule} from './shared/navbar/navbar.module';
 import {FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import {NguiMapModule} from '@ngui/map';
 import {Select2Module} from 'ng2-select2';
-import{FormBuilder, FormsModule, ReactiveFormsModule}  from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 // import {UiSwitchModule} from 'ngx-ui-switch';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
