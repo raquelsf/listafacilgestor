@@ -51,6 +51,7 @@ export class EstablishmentsFormDataComponent implements OnInit {
     }
 
     public onSubmit(Establishment) {
+        console.log(Establishment)
         Establishment.imagem = this.fileToUpload;
         Establishment.id_subcategoria = this.SubCategorie;
         console.log(Establishment);

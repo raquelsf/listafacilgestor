@@ -53,9 +53,11 @@ export class EstablishmentService {
         form.append('desc', data.desc);
         form.append('facebook', data.facebook);
         form.append('instagram', data.instagram);
+        form.append('telefone', data.telefone);
+        form.append('telefone2', data.telefone2);
         form.append('email', data.email);
 
-        console.log(data);
+        console.log(form);
         return this.http.post('http://listfacil.com/api/public/establishments', form).toPromise();
 
     }
